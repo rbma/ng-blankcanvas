@@ -1,0 +1,1 @@
+(function(){"use strict";var t;t=angular.module("textfeature",["ngRoute","listControllers"]),t.config(["$routeProvider",function(t){return t.when("/lists",{templateUrl:"partials/list.html",controller:"ListListCtrl"}).when("/lists/:listId",{templateUrl:"partials/detail.html",controller:"ListDetailCtrl"}).otherwise({redirectTo:"/lists"})}])}).call(this);
