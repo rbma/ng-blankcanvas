@@ -19,6 +19,11 @@ html {
   width: 100%;
   height: 100%; }
 
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer; }
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -55,7 +60,8 @@ body {
   .list-wrapper .list-thumbs {
     list-style-type: none;
     padding: none;
-    text-align: center; }
+    text-align: center;
+    z-index: 1; }
     .list-wrapper .list-thumbs li {
       display: inline-block;
       text-align: center; }
@@ -92,16 +98,17 @@ body {
           overflow: hidden;
           width: 200px;
           height: 200px;
+          background-color: white;
           -webkit-transform: rotate(-45deg);
           -moz-transform: rotate(-45deg);
           -ms-transform: rotate(-45deg);
           -o-transform: rotate(-45deg);
           transform: rotate(-45deg);
-          -webkit-transition: all 0.2s ease-in-out;
-          -moz-transition: all 0.2s ease-in-out;
-          -ms-transition: all 0.2s ease-in-out;
-          -o-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
+          -webkit-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -moz-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -ms-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -o-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
           z-index: 5; }
           .list-wrapper .list-thumbs li .thumb-container .img-container img {
             height: 100%;
@@ -112,12 +119,13 @@ body {
             -ms-transform: rotate(0);
             -o-transform: rotate(0);
             transform: rotate(0);
-            -webkit-transform: scale(1.3);
-            -moz-transform: scale(1.3);
-            -ms-transform: scale(1.3);
-            -o-transform: scale(1.3);
-            transform: scale(1.3);
-            z-index: 0 !important; }
+            -webkit-transform: scale(1.5);
+            -moz-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            transform: scale(1.5); }
+        .list-wrapper .list-thumbs li .thumb-container:hover {
+          z-index: 999; }
   .list-wrapper .intro {
     width: 66.6666666666%;
     margin-left: 33.33333333333%;

@@ -19,13 +19,3 @@ app.config(['$routeProvider', ($routeProvider) ->
 			})
 ])
 
-app.directive('markdown', ->
-	converter = new Showdown.converter()
-	return {
-		restrict: 'E',
-		link: (scope, element, attrs) ->
-			htmlText = converter.makeHtml(element.text())
-			element.html(htmlText)
-	}
-
-)

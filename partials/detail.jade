@@ -16,6 +16,7 @@
 
 	ul(class="list-items")
 		li(class="list-item", ng-repeat="item in list.includes.Entry")
+			a(id="{{item.fields.order}}")
 			.list-container
 				.list-titles
 					span(class="item-order") {{item.fields.order}}
@@ -30,5 +31,7 @@
 		h4(class="author-sidebar") {{list.items[0].fields.author}}
 		ul(class="sidebar-list")
 			li(class="sidebar-item", ng-repeat="item in list.includes.Entry")
-				a(href class="order") {{item.fields.order}}
-				a(href) {{item.fields.title}}
+				a(ng-click="gotoBottom()", class="order") {{item.fields.order}}
+				a(ng-click="gotoBottom()") {{item.fields.title}}
+
+	a(id="bottom")
