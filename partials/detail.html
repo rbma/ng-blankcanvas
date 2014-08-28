@@ -1,2 +1,32 @@
 
-<p>TBD: detail view</p>
+<div class="list-wrapper">
+  <div class="rbma-radio-picks"></div>
+  <h1 class="author">{{list.items[0].fields.author}}</h1>
+  <ul class="list-thumbs">
+    <li ng-repeat="img in list.includes.Asset">
+      <div class="thumb-container"><span class="order">{{img.fields.description}}</span><a href="href">
+          <div class="img-container"><img ng-src="{{img.fields.file.url}}"/></div></a></div>
+    </li>
+  </ul>
+  <p class="intro">{{list.items[0].fields.body}}</p>
+  <ul class="list-items">
+    <li ng-repeat="item in list.includes.Entry" class="list-item">
+      <div class="list-container">
+        <div class="list-titles"><span class="item-order">{{item.fields.order}}</span>
+          <h3 class="item-title">{{item.fields.title}}</h3>
+        </div>
+        <div class="item-body">
+          <div class="item-image-wrapper"><img src="https://images.contentful.com/6s2rqhmim2vw/1X6aOpRY4Yk2CiECM4WQ4S/357349451e66e97d376fb36bb13720dd/recursos_del_tutorial_by_cassi_editions-d79td1t.png"/></div>
+          <p>{{item.fields.body}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="sidebar">
+    <h4 class="radio-picks-sidebar"></h4>
+    <h4 class="author-sidebar">{{list.items[0].fields.author}}</h4>
+    <ul class="sidebar-list">
+      <li ng-repeat="item in list.includes.Entry" class="sidebar-item"><a href="href" class="order">{{item.fields.order}}</a><a href="href">{{item.fields.title}}</a></li>
+    </ul>
+  </div>
+</div>
