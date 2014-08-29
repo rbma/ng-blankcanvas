@@ -203,12 +203,13 @@ body {
     position: fixed;
     top: 40%;
     left: 20px;
-    width: 33.3333333333%; }
+    width: 17.3333333333%; }
     .list-wrapper .sidebar h4 {
       margin: 0; }
     .list-wrapper .sidebar img {
-      max-width: 40%;
-      height: auto; }
+      max-width: 50%;
+      height: auto;
+      margin-left: 20px; }
     .list-wrapper .sidebar .radio-picks-sidebar {
       margin-left: 20px; }
       .list-wrapper .sidebar .radio-picks-sidebar:after {
@@ -220,12 +221,13 @@ body {
       padding: 0;
       margin-left: 20px; }
       .list-wrapper .sidebar .sidebar-list .sidebar-item {
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        background-color: transparent;
+        color: black !important; }
         .list-wrapper .sidebar .sidebar-list .sidebar-item a {
           display: inline-block;
-          margin-right: 5px;
-          text-decoration: none;
-          color: black; }
+          margin: 5px;
+          text-decoration: none; }
           .list-wrapper .sidebar .sidebar-list .sidebar-item a.order {
             width: 15px;
             text-align: center;
@@ -237,6 +239,8 @@ body {
             -ms-border-radius: 50%;
             -o-border-radius: 50%;
             border-radius: 50%; }
-            .list-wrapper .sidebar .sidebar-list .sidebar-item a.order.active {
-              color: white;
-              background-color: black; }
+        .list-wrapper .sidebar .sidebar-list .sidebar-item:hover {
+          background-color: black;
+          color: white !important; }
+          .list-wrapper .sidebar .sidebar-list .sidebar-item:hover .order {
+            border: 2px solid white !important; }

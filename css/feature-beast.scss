@@ -198,13 +198,14 @@ body{
 		position: fixed;
 		top: 40%;
 		left: 20px;
-		width: 33.3333333333%;
+		width: 17.3333333333%;
 		h4{
 			margin: 0;
 		}
 		img{
-			max-width: 40%;
+			max-width: 50%;
 			height: auto;
+			margin-left: 20px;
 		}
 		.radio-picks-sidebar{
 			margin-left: 20px;
@@ -219,13 +220,15 @@ body{
 			list-style-type: none;
 			padding: 0;
 			margin-left: 20px;
+			
 			.sidebar-item{
 				margin-bottom: 10px;
+				background-color: transparent;
+				color: black !important;
 				a{
 					display: inline-block;
-					margin-right: 5px;
+					margin: 5px;
 					text-decoration: none;
-					color: black;
 					&.order{
 						width: 15px;
 						text-align: center;
@@ -233,11 +236,14 @@ body{
 						height: 15px;
 						border: 2px solid black;
 						@include vendorize(border-radius, 50%);
-						&.active{
-							color: white;
-							background-color: black;
-						}
 					}
+				}
+				&:hover{
+						background-color: black;
+						color: white !important;
+						.order{
+							border: 2px solid white !important; 
+						}
 				}
 			}
 		}
