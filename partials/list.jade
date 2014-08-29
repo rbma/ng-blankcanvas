@@ -1,4 +1,7 @@
 ul(class="lists")
-	li(ng-repeat="list in lists")
+	li(ng-model="lists", ng-repeat="list in lists")
 		a(href="#/lists/{{list.sys.id}}")
-			h3 {{list.fields.title}}
+			.list-list-wrapper
+				.list-list-image-wrapper
+					img(ng-src="{{list.fields.authorImage.fields.file.url}}")
+				h3 {{list.fields.title}}

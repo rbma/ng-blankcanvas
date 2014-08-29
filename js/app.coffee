@@ -6,6 +6,7 @@ app = angular.module('textfeature', [
 	'listControllers'
 ])
 
+
 app.config(['$routeProvider', ($routeProvider) ->
 	$routeProvider.when('/lists', {
 		templateUrl: 'partials/list.html',

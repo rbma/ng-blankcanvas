@@ -1,22 +1,22 @@
 
 <div class="list-wrapper">
   <div class="rbma-radio-picks"></div>
-  <h1 class="author">{{list.items[0].fields.author}}</h1>
+  <h1 class="author">{{list.fields.author}}</h1>
   <ul class="list-thumbs">
-    <li ng-repeat="img in list.includes.Asset">
-      <div class="thumb-container"><span class="order">{{img.fields.description}}</span><a href="href">
-          <div class="img-container"><img ng-src="{{img.fields.file.url}}"/></div></a></div>
+    <li ng-repeat="entry in list.fields.individualListItems">
+      <div class="thumb-container"><span class="order">{{entry.fields.order}}</span><a href="href">
+          <div class="img-container"><img ng-src="{{entry.fields.image.fields.file.url}}"/></div></a></div>
     </li>
   </ul>
-  <p ng-bind-html="trust(list.items[0].fields.body)" class="intro"></p>
+  <p ng-bind-html="trust(list.entry[0].fields.body)" class="intro"></p>
   <ul class="list-items">
-    <li ng-repeat="item in list.includes.Entry" class="list-item"><a id="{{item.fields.order}}"></a>
+    <li ng-repeat="item in list.fields.individualListItems" class="list-item"><a id="{{item.fields.order}}"></a>
       <div class="list-container">
         <div class="list-titles"><span class="item-order">{{item.fields.order}}</span>
           <h3 class="item-title">{{item.fields.title}}</h3>
         </div>
         <div class="item-body">
-          <div class="item-image-wrapper"><img src="https://images.contentful.com/6s2rqhmim2vw/1X6aOpRY4Yk2CiECM4WQ4S/357349451e66e97d376fb36bb13720dd/recursos_del_tutorial_by_cassi_editions-d79td1t.png"/></div>
+          <div class="item-image-wrapper"><img ng-src="{{item.fields.image.fields.file.url}}"/></div>
           <p ng-bind-html="trust(item.fields.body)"></p>
         </div>
       </div>
@@ -24,9 +24,9 @@
   </ul>
   <div class="sidebar">
     <h4 class="radio-picks-sidebar"></h4>
-    <h4 class="author-sidebar">{{list.items[0].fields.author}}</h4>
+    <h4 class="author-sidebar">{{list.fields.author}}</h4>
     <ul class="sidebar-list">
-      <li ng-repeat="item in list.includes.Entry" class="sidebar-item"><a ng-click="gotoBottom()" class="order">{{item.fields.order}}</a><a ng-click="gotoBottom()">{{item.fields.title}}</a></li>
+      <li ng-repeat="item in list.fields.individualListItems" class="sidebar-item"><a ng-click="gotoBottom()" class="order">{{item.fields.order}}</a><a ng-click="gotoBottom()">{{item.fields.title}}</a></li>
     </ul>
   </div><a id="bottom"></a>
 </div>

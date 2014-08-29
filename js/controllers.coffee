@@ -3,14 +3,29 @@
 #CONTROLLERS
 listControllers = angular.module('listControllers', [])
 
+
+
+
+client = contentful.createClient
+		accessToken: 'c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d'
+		space: '6s2rqhmim2vw'
+
+
+
+
+
 listControllers.controller('ListListCtrl', ['$scope', '$http', ($scope, $http) ->
-	$scope.lists = []
-	$http.get('https://cdn.contentful.com/spaces/6s2rqhmim2vw/entries?content_type=1iKCsUgXpSuSouwuMIYACy&include=1&access_token=c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d').success (data) ->
-		$scope.lists = data.items
-		console.log $scope.lists
-
-
+	$scope.lists = ""
+	
+	client.entries({'content_type': '1iKCsUgXpSuSouwuMIYACy', 'include': 1}).done (data) ->
+		$scope.$apply(->
+			$scope.lists = data
+			console.log $scope.lists
+		)
+		
 ])
+
+
 
 listControllers.controller('ListDetailCtrl', [
 	'$scope', 
@@ -20,11 +35,16 @@ listControllers.controller('ListDetailCtrl', [
 	'$anchorScroll',
 	'$sce',
 	($scope, $routeParams, $http, $location, $anchorScroll, $sce) ->
+		
 		converter = new Showdown.converter()
-		$http.get('https://cdn.contentful.com/spaces/6s2rqhmim2vw/entries?sys.id=' + $routeParams.listId + '&include=10&access_token=c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d').success (data) ->
-			$scope.list = data
-			console.log $scope.list
-			$scope.list.items[0].fields.body = converter.makeHtml($scope.list.items[0].fields.body)
+
+		client.entries({'sys.id': $routeParams.listId, 'include': 10}).done (data) ->
+			$scope.$apply(->
+				$scope.list = data[0]
+				console.log $scope.list
+				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
+		)
+		
 
 		$scope.trust = (body) ->
 
