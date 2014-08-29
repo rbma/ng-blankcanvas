@@ -56,7 +56,7 @@ listControllers.controller('ListDetailCtrl', [
 
 		$scope.smoothScroll = (element) ->
 			elementLoc = $("##{element}").offset().top
-			$('body').animate
+			$('html, body').animate
 				scrollTop: elementLoc
 			, 300
 			return false

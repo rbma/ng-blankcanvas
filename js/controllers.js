@@ -45,7 +45,7 @@
         return $scope.smoothScroll = function(element) {
             var elementLoc;
             elementLoc = $("#" + element).offset().top;
-            $("body").animate({
+            $("html, body").animate({
                 scrollTop: elementLoc
             }, 300);
             return false;
