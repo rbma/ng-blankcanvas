@@ -22,7 +22,7 @@ html {
 [ng-click],
 [data-ng-click],
 [x-ng-click] {
-  cursor: pointer; }
+  cursor: pointer !important; }
 
 body {
   margin: 0;
@@ -81,13 +81,14 @@ body {
     list-style-type: none;
     padding: none;
     text-align: center;
-    z-index: 1; }
+    z-index: 1;
+    margin-top: 68px; }
     .list-wrapper .list-thumbs li {
       display: inline-block;
       text-align: center; }
       .list-wrapper .list-thumbs li .thumb-container {
         position: relative;
-        margin-top: 68px;
+        margin-top: -8px;
         text-align: center;
         width: 200px;
         height: 300px;
@@ -118,6 +119,7 @@ body {
           overflow: hidden;
           width: 200px;
           height: 200px;
+          text-align: center;
           background-color: white;
           -webkit-transform: rotate(-45deg);
           -moz-transform: rotate(-45deg);
@@ -190,7 +192,8 @@ body {
           margin-top: 20px;
           height: 400px;
           overflow: hidden;
-          border: 4px solid black; }
+          border: 4px solid black;
+          text-align: center; }
         .list-wrapper .list-items .list-item .list-container .item-body img {
           height: 100%;
           width: auto; }
@@ -199,10 +202,13 @@ body {
   .list-wrapper .sidebar {
     position: fixed;
     top: 40%;
-    left: 0;
+    left: 20px;
     width: 33.3333333333%; }
     .list-wrapper .sidebar h4 {
       margin: 0; }
+    .list-wrapper .sidebar img {
+      max-width: 40%;
+      height: auto; }
     .list-wrapper .sidebar .radio-picks-sidebar {
       margin-left: 20px; }
       .list-wrapper .sidebar .radio-picks-sidebar:after {

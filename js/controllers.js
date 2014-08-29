@@ -19,7 +19,7 @@
         });
     } ]);
     listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", function($scope, $routeParams, $http, $location, $anchorScroll, $sce) {
-        var converter;
+        var container, converter;
         converter = new Showdown.converter();
         client.entries({
             "sys.id": $routeParams.listId,
@@ -34,9 +34,21 @@
         $scope.trust = function(body) {
             return $sce.trustAsHtml(body);
         };
-        return $scope.gotoBottom = function() {
-            $location.hash("bottom");
-            return $anchorScroll();
+        $scope.gotoBottom = function(order) {
+            var old;
+            old = $location.hash();
+            $location.hash(order);
+            $anchorScroll();
+            return $location.hash(old);
+        };
+        container = angular.element(document.getElementById("container"));
+        return $scope.smoothScroll = function(element) {
+            var elementLoc;
+            elementLoc = $("#" + element).offset().top;
+            $("body").animate({
+                scrollTop: elementLoc
+            }, 300);
+            return false;
         };
     } ]);
 }).call(this);

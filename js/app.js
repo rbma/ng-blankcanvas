@@ -1,7 +1,7 @@
 (function() {
     "use strict";
     var app;
-    app = angular.module("textfeature", [ "ngRoute", "ngSanitize", "listControllers" ]);
+    app = angular.module("textfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils" ]);
     app.config([ "$routeProvider", function($routeProvider) {
         return $routeProvider.when("/lists", {
             templateUrl: "partials/list.html",

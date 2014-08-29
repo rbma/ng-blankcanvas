@@ -3,7 +3,9 @@
 app = angular.module('textfeature', [
 	'ngRoute',
 	'ngSanitize',
-	'listControllers'
+	'listControllers',
+	'listDirectives',
+	'ui.utils'
 ])
 
 
@@ -20,4 +22,5 @@ app.config(['$routeProvider', ($routeProvider) ->
 			redirectTo: '/lists'
 			})
 ])
+
 
