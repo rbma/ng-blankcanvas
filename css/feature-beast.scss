@@ -1,0 +1,252 @@
+// Place all the styles related to the features controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '_mixins.scss';
+@import '_fonts.scss';
+
+html{
+	width: 100%;
+	height: 100%;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer !important;
+}
+
+body{
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	vertical-align: baseline;
+	width: 100%;
+	height: 100%;
+	-webkit-tap-highlight-color: transparent;
+	background-color: white;
+	@include vendorize(box-sizing, border-box);
+	-webkit-overflow-scrolling: touch;
+	font-family: 'karla', 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+.lists{
+	list-style-type: none;
+	text-align: center;
+	li{
+		display: inline;
+		a{
+		color: black;
+		text-decoration: underline;
+		.list-list-wrapper{
+			width: 30%;
+			position: relative;
+			border: 4px solid black;
+			.list-list-image-wrapper{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				img{
+					max-width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+
+	}
+}
+
+.list-wrapper{
+	position: relative;
+	margin-top: 50px;
+	margin: 50px 10% auto 10%;
+	width: 80%;
+	overflow: hidden;
+	height: 100%;
+	.rbma-radio-picks{
+		font-size: 2em;
+		border-bottom: 5px solid black;
+		width: 100%;
+		&:after{
+			content: 'RBMA Radio Picks';
+		}
+	}
+	.author{
+		font-size: 4em;
+		margin: 0;
+	}
+
+	.list-thumbs{
+		list-style-type: none;
+		padding: none;
+		text-align: center;
+		z-index: 1;
+		margin-top: 68px;
+		li{
+			display: inline-block;
+			text-align: center;
+			.thumb-container{
+				position: relative;
+				margin-top: -8px;
+				text-align: center;
+				width: 200px;
+				height: 300px;
+				z-index: 1;
+				span{
+					position: absolute;
+					text-align: center;
+					@include vendorize(border-radius, 50%);
+					bottom: 10px;
+					left: 50%;
+					font-size: 0.5em;
+					font-weight: bold;
+					@include vendorize(transform, rotate(-45deg));
+					border: 2px solid black;
+					width: 15px;
+					height: 15px;
+					line-height: 15px;
+				}
+				.img-container{
+					border: 5px solid black;
+					overflow: hidden;
+					width: 200px;
+					height: 200px;
+					text-align: center;
+					background-color: white;
+					@include vendorize(transform, rotate(-45deg));
+					@include vendorize(transition, all .1s cubic-bezier(.17,.67,.83,.67));
+					z-index: 5;
+					img{
+						height: 100%;
+						width: auto;
+					}
+					&:hover{
+						@include vendorize(transform, rotate(0));
+						@include vendorize(transform, scale(1.5));
+					}
+				}
+				&:hover{
+					z-index: 999;
+				}
+			}
+		}
+	}
+
+	.intro{
+		width: 66.6666666666%;
+		margin-left: 33.33333333333%;
+		font-size: 1.7em;
+		line-height: 1.5;
+	}
+
+	.list-items{
+		width: 66.6666666666%;
+		margin-left: 33.33333333333%;
+		font-size: 1.7em;
+		line-height: 1.5;
+		list-style-type: none;
+		padding: 0;
+		.list-item{
+			padding: 0;
+			.list-container{
+				position: relative;
+				height: auto;
+				width: 100%;
+				.list-titles{
+					border-bottom: 5px solid black;
+					margin: 0;
+					.item-order{
+						font-size: 0.7em;
+						display: inline-block;
+						text-align: center;
+						width: 20px;
+						line-height: 20px;
+						height: 20px;
+						border: 2px solid black;
+						@include vendorize(border-radius, 50%);
+					}
+					.item-title{
+						font-size: 1em;
+						display: inline-block;
+						line-height: 20px;
+						margin-left: 50px;
+					}
+				}
+				.item-body{
+					.item-image-wrapper{
+						width: 400px;
+						margin-top: 20px;
+						height: 400px;
+						overflow: hidden;
+						border: 4px solid black;
+						text-align: center;
+					}
+					img{
+						height: 100%;
+						width: auto;
+					}
+					p{
+						text-indent: 100px;
+					}
+				}
+			}
+		}
+	}
+
+	.sidebar{
+		position: fixed;
+		top: 40%;
+		left: 20px;
+		width: 17.3333333333%;
+		h4{
+			margin: 0;
+		}
+		img{
+			max-width: 50%;
+			height: auto;
+			margin-left: 20px;
+		}
+		.radio-picks-sidebar{
+			margin-left: 20px;
+			&:after{
+				content: 'RBMA Radio Picks'
+			}
+		}
+		.author-sidebar{
+			margin-left: 20px;
+		}
+		.sidebar-list{
+			list-style-type: none;
+			padding: 0;
+			margin-left: 20px;
+			
+			.sidebar-item{
+				margin-bottom: 10px;
+				background-color: transparent;
+				color: black !important;
+				a{
+					display: inline-block;
+					margin: 5px;
+					text-decoration: none;
+					&.order{
+						width: 15px;
+						text-align: center;
+						line-height: 15px;
+						height: 15px;
+						border: 2px solid black;
+						@include vendorize(border-radius, 50%);
+					}
+				}
+				&:hover{
+						background-color: black;
+						color: white !important;
+						.order{
+							border: 2px solid white !important; 
+						}
+				}
+			}
+		}
+	}
+}
+

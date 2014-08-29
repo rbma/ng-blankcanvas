@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'fugue';
+  src: url(../fonts/fugue_regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'karla';
+  src: url(../fonts/karla-bold-webfont.eot);
+  src: url(../fonts/karla-bold-webfont.eot?#iefix) format("embedded-opentype"), url(../fonts/karla-bold-webfont.woff) format("woff");
+  font-weight: bold;
+  font-style: normal; }
+@font-face {
+  font-family: 'karla';
+  src: url(../fonts/karla-regular-webfont.eot);
+  src: url(../fonts/karla-regular-webfont.eot?#iefix) format("embedded-opentype"), url(../fonts/karla-regular-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal; }
+html {
+  width: 100%;
+  height: 100%; }
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer !important; }
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: baseline;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  font-family: 'karla', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px; }
+
+.lists {
+  list-style-type: none;
+  text-align: center; }
+  .lists li {
+    display: inline; }
+    .lists li a {
+      color: black;
+      text-decoration: underline; }
+      .lists li a .list-list-wrapper {
+        width: 30%;
+        position: relative;
+        border: 4px solid black; }
+        .lists li a .list-list-wrapper .list-list-image-wrapper {
+          width: 100%;
+          height: 100%;
+          overflow: hidden; }
+          .lists li a .list-list-wrapper .list-list-image-wrapper img {
+            max-width: 100%;
+            height: auto; }
+
+.list-wrapper {
+  position: relative;
+  margin-top: 50px;
+  margin: 50px 10% auto 10%;
+  width: 80%;
+  overflow: hidden;
+  height: 100%; }
+  .list-wrapper .rbma-radio-picks {
+    font-size: 2em;
+    border-bottom: 5px solid black;
+    width: 100%; }
+    .list-wrapper .rbma-radio-picks:after {
+      content: 'RBMA Radio Picks'; }
+  .list-wrapper .author {
+    font-size: 4em;
+    margin: 0; }
+  .list-wrapper .list-thumbs {
+    list-style-type: none;
+    padding: none;
+    text-align: center;
+    z-index: 1;
+    margin-top: 68px; }
+    .list-wrapper .list-thumbs li {
+      display: inline-block;
+      text-align: center; }
+      .list-wrapper .list-thumbs li .thumb-container {
+        position: relative;
+        margin-top: -8px;
+        text-align: center;
+        width: 200px;
+        height: 300px;
+        z-index: 1; }
+        .list-wrapper .list-thumbs li .thumb-container span {
+          position: absolute;
+          text-align: center;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          bottom: 10px;
+          left: 50%;
+          font-size: 0.5em;
+          font-weight: bold;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          border: 2px solid black;
+          width: 15px;
+          height: 15px;
+          line-height: 15px; }
+        .list-wrapper .list-thumbs li .thumb-container .img-container {
+          border: 5px solid black;
+          overflow: hidden;
+          width: 200px;
+          height: 200px;
+          text-align: center;
+          background-color: white;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          -webkit-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -moz-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -ms-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -o-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          z-index: 5; }
+          .list-wrapper .list-thumbs li .thumb-container .img-container img {
+            height: 100%;
+            width: auto; }
+          .list-wrapper .list-thumbs li .thumb-container .img-container:hover {
+            -webkit-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+            -o-transform: rotate(0);
+            transform: rotate(0);
+            -webkit-transform: scale(1.5);
+            -moz-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            transform: scale(1.5); }
+        .list-wrapper .list-thumbs li .thumb-container:hover {
+          z-index: 999; }
+  .list-wrapper .intro {
+    width: 66.6666666666%;
+    margin-left: 33.33333333333%;
+    font-size: 1.7em;
+    line-height: 1.5; }
+  .list-wrapper .list-items {
+    width: 66.6666666666%;
+    margin-left: 33.33333333333%;
+    font-size: 1.7em;
+    line-height: 1.5;
+    list-style-type: none;
+    padding: 0; }
+    .list-wrapper .list-items .list-item {
+      padding: 0; }
+      .list-wrapper .list-items .list-item .list-container {
+        position: relative;
+        height: auto;
+        width: 100%; }
+        .list-wrapper .list-items .list-item .list-container .list-titles {
+          border-bottom: 5px solid black;
+          margin: 0; }
+          .list-wrapper .list-items .list-item .list-container .list-titles .item-order {
+            font-size: 0.7em;
+            display: inline-block;
+            text-align: center;
+            width: 20px;
+            line-height: 20px;
+            height: 20px;
+            border: 2px solid black;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%; }
+          .list-wrapper .list-items .list-item .list-container .list-titles .item-title {
+            font-size: 1em;
+            display: inline-block;
+            line-height: 20px;
+            margin-left: 50px; }
+        .list-wrapper .list-items .list-item .list-container .item-body .item-image-wrapper {
+          width: 400px;
+          margin-top: 20px;
+          height: 400px;
+          overflow: hidden;
+          border: 4px solid black;
+          text-align: center; }
+        .list-wrapper .list-items .list-item .list-container .item-body img {
+          height: 100%;
+          width: auto; }
+        .list-wrapper .list-items .list-item .list-container .item-body p {
+          text-indent: 100px; }
+  .list-wrapper .sidebar {
+    position: fixed;
+    top: 40%;
+    left: 20px;
+    width: 17.3333333333%; }
+    .list-wrapper .sidebar h4 {
+      margin: 0; }
+    .list-wrapper .sidebar img {
+      max-width: 50%;
+      height: auto;
+      margin-left: 20px; }
+    .list-wrapper .sidebar .radio-picks-sidebar {
+      margin-left: 20px; }
+      .list-wrapper .sidebar .radio-picks-sidebar:after {
+        content: "RBMA Radio Picks"; }
+    .list-wrapper .sidebar .author-sidebar {
+      margin-left: 20px; }
+    .list-wrapper .sidebar .sidebar-list {
+      list-style-type: none;
+      padding: 0;
+      margin-left: 20px; }
+      .list-wrapper .sidebar .sidebar-list .sidebar-item {
+        margin-bottom: 10px;
+        background-color: transparent;
+        color: black !important; }
+        .list-wrapper .sidebar .sidebar-list .sidebar-item a {
+          display: inline-block;
+          margin: 5px;
+          text-decoration: none; }
+          .list-wrapper .sidebar .sidebar-list .sidebar-item a.order {
+            width: 15px;
+            text-align: center;
+            line-height: 15px;
+            height: 15px;
+            border: 2px solid black;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%; }
+        .list-wrapper .sidebar .sidebar-list .sidebar-item:hover {
+          background-color: black;
+          color: white !important; }
+          .list-wrapper .sidebar .sidebar-list .sidebar-item:hover .order {
+            border: 2px solid white !important; }

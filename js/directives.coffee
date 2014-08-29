@@ -1,0 +1,1 @@
+listDirectives = angular.module('listDirectives', [])

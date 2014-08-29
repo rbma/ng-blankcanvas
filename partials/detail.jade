@@ -1,0 +1,39 @@
+.list-wrapper(id="top")
+	.rbma-radio-picks
+	h1(class="author") {{list.fields.author}}
+	//- img(ng-src="{{list.includes.Asset[0].fields.file.url}}")
+
+	ul(class="list-thumbs")
+		li(ng-repeat="entry in list.fields.individualListItems")
+			.thumb-container
+				span(class="order") {{entry.fields.order}}
+				a(ng-click="smoothScroll(entry.fields.anchorLinkTag)")
+					.img-container
+						img(ng-src="{{entry.fields.image.fields.file.url}}")
+
+	p(class="intro", ng-bind-html="trust(list.entry[0].fields.body)")
+
+
+	ul(class="list-items")
+		li(class="list-item", ng-repeat="item in list.fields.individualListItems")
+			a(id="{{item.fields.anchorLinkTag}}")
+			.list-container
+				.list-titles
+					span(class="item-order") {{item.fields.order}}
+					h3(class="item-title") {{item.fields.title}}
+				.item-body
+					.item-image-wrapper
+						img(ng-src="{{item.fields.image.fields.file.url}}")
+					p(ng-bind-html="trust(item.fields.body)")
+
+	.sidebar
+		a(ng-click="smoothScroll('top')")
+			img(ng-src="{{list.fields.authorImage.fields.file.url}}")
+			h4(class="radio-picks-sidebar")
+			h4(class="author-sidebar") {{list.fields.author}}
+		ul(class="sidebar-list")
+			li(class="sidebar-item", ng-repeat="item in list.fields.individualListItems")
+				a(class="{{item.fields.anchorLinkTag}} order", ng-click="smoothScroll(item.fields.anchorLinkTag)") {{item.fields.order}}
+				a(ng-click="smoothScroll(item.fields.anchorLinkTag)") {{item.fields.title}}
+
+	a(id="bottom")
