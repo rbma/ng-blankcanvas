@@ -1,1 +1,16 @@
-(function(){"use strict";var t;t=angular.module("textfeature",["ngRoute","listControllers"]),t.config(["$routeProvider",function(t){return t.when("/lists",{templateUrl:"partials/list.html",controller:"ListListCtrl"}).when("/lists/:listId",{templateUrl:"partials/detail.html",controller:"ListDetailCtrl"}).otherwise({redirectTo:"/lists"})}])}).call(this);
+(function() {
+    "use strict";
+    var app;
+    app = angular.module("textfeature", [ "ngRoute", "ngSanitize", "listControllers" ]);
+    app.config([ "$routeProvider", function($routeProvider) {
+        return $routeProvider.when("/lists", {
+            templateUrl: "partials/list.html",
+            controller: "ListListCtrl"
+        }).when("/lists/:listId", {
+            templateUrl: "partials/detail.html",
+            controller: "ListDetailCtrl"
+        }).otherwise({
+            redirectTo: "/lists"
+        });
+    } ]);
+}).call(this);

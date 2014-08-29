@@ -11,7 +11,7 @@
 					.img-container
 						img(ng-src="{{img.fields.file.url}}")
 
-	p(class="intro") {{list.items[0].fields.body}}
+	p(class="intro", ng-bind-html="trust(list.items[0].fields.body)")
 
 
 	ul(class="list-items")
@@ -24,7 +24,7 @@
 				.item-body
 					.item-image-wrapper
 						img(src="https://images.contentful.com/6s2rqhmim2vw/1X6aOpRY4Yk2CiECM4WQ4S/357349451e66e97d376fb36bb13720dd/recursos_del_tutorial_by_cassi_editions-d79td1t.png")
-					p {{item.fields.body}}
+					p(ng-bind-html="trust(item.fields.body)")
 
 	.sidebar
 		h4(class="radio-picks-sidebar")

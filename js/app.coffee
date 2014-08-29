@@ -2,6 +2,7 @@
 
 app = angular.module('textfeature', [
 	'ngRoute',
+	'ngSanitize',
 	'listControllers'
 ])
 

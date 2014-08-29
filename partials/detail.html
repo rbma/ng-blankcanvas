@@ -8,7 +8,7 @@
           <div class="img-container"><img ng-src="{{img.fields.file.url}}"/></div></a></div>
     </li>
   </ul>
-  <p class="intro">{{list.items[0].fields.body}}</p>
+  <p ng-bind-html="trust(list.items[0].fields.body)" class="intro"></p>
   <ul class="list-items">
     <li ng-repeat="item in list.includes.Entry" class="list-item"><a id="{{item.fields.order}}"></a>
       <div class="list-container">
@@ -17,7 +17,7 @@
         </div>
         <div class="item-body">
           <div class="item-image-wrapper"><img src="https://images.contentful.com/6s2rqhmim2vw/1X6aOpRY4Yk2CiECM4WQ4S/357349451e66e97d376fb36bb13720dd/recursos_del_tutorial_by_cassi_editions-d79td1t.png"/></div>
-          <p>{{item.fields.body}}</p>
+          <p ng-bind-html="trust(item.fields.body)"></p>
         </div>
       </div>
     </li>
