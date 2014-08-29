@@ -22,7 +22,7 @@
 					span(class="item-order") {{item.fields.order}}
 					h3(class="item-title") {{item.fields.title}}
 				.item-body
-					.item-image-wrapper
+					.item-image-wrapper(ng-show="{{item.fields.embedAsImage}}")
 						img(ng-src="{{item.fields.image.fields.file.url}}")
 					p(ng-bind-html="trust(item.fields.body)")
 

@@ -198,7 +198,11 @@ body {
           height: 100%;
           width: auto; }
         .list-wrapper .list-items .list-item .list-container .item-body p {
-          text-indent: 100px; }
+          text-align: left; }
+          .list-wrapper .list-items .list-item .list-container .item-body p iframe {
+            margin: 0;
+            margin-bottom: 50px;
+            display: block; }
   .list-wrapper .sidebar {
     position: fixed;
     top: 40%;

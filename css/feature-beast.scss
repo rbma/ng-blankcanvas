@@ -187,7 +187,13 @@ body{
 						width: auto;
 					}
 					p{
-						text-indent: 100px;
+						text-align: left;
+						iframe{
+							margin: 0;
+							margin-bottom: 50px;
+							display: block;
+
+						}
 					}
 				}
 			}
