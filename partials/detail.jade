@@ -32,8 +32,9 @@
 			h4(class="radio-picks-sidebar")
 			h4(class="author-sidebar") {{list.fields.author}}
 		ul(class="sidebar-list")
-			li(class="sidebar-item", ng-repeat="item in list.fields.individualListItems")
-				a(class="{{item.fields.anchorLinkTag}} order", ng-click="smoothScroll(item.fields.anchorLinkTag)") {{item.fields.order}}
-				a(ng-click="smoothScroll(item.fields.anchorLinkTag)") {{item.fields.title}}
+			a(class="{{item.fields.anchorLinkTag}} order", ng-click="smoothScroll(item.fields.anchorLinkTag)")
+				li(class="sidebar-item", ng-repeat="item in list.fields.individualListItems")
+					{{item.fields.order}}
+					{{item.fields.title}}
 
 	a(id="bottom")

@@ -33,11 +33,13 @@ listControllers.controller('ListDetailCtrl', [
 		converter = new Showdown.converter()
 
 
+
 		client.entries({'sys.id': $routeParams.listId, 'include': 10}).done (data) ->
 			$scope.$apply(->
 				$scope.list = data[0]
 				console.log $scope.list
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
+				wrapIframes()
 
 		)
 		

@@ -28,7 +28,8 @@
             return $scope.$apply(function() {
                 $scope.list = data[0];
                 console.log($scope.list);
-                return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
+                $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
+                return wrapIframes();
             });
         });
         $scope.trust = function(body) {
