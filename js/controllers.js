@@ -25,27 +25,23 @@
             "sys.id": $routeParams.listId,
             include: 10
         }).done(function(data) {
-            return $scope.$apply(function() {
-                var height, sendHeight;
+            var height, sendHeight;
+            $scope.$apply(function() {
                 $scope.list = data[0];
                 console.log($scope.list);
-                $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
-                height = $(".list-wrapper").innerHeight();
-                sendHeight = function(height) {
-                    var message, messageJSON;
-                    console.log(height);
-                    message = {
-                        height: height
-                    };
-                    messageJSON = JSON.stringify(message);
-                    return window.parent.postMessage(messageJSON, "*");
-                };
-                sendHeight(height);
-                return $(window).on("resize", function() {
-                    height = $(".list-wrapper").innerHeight();
-                    return sendHeight(height);
-                });
+                return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
+            height = $(".list-wrapper").innerHeight();
+            sendHeight = function(height) {
+                var message, messageJSON;
+                console.log(height);
+                message = {
+                    height: height
+                };
+                messageJSON = JSON.stringify(message);
+                return window.parent.postMessage(messageJSON, "*");
+            };
+            return sendHeight(height);
         });
         $scope.trust = function(body) {
             return $sce.trustAsHtml(body);
