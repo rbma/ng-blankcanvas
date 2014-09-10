@@ -41,16 +41,17 @@ listControllers.controller('ListDetailCtrl', [
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
 			)
 
+
+			height = $('.list-wrapper').innerHeight()
+			console.log height
+			$('.list-wrapper').css
+					height: height
+
 			sendHeight = (height) ->
 				message = {height: height}
 				messageJSON = JSON.stringify(message)
 				console.log messageJSON
 				return window.parent.postMessage(messageJSON, '*')
-
-			height = $('.hero').innerHeight()
-			console.log height
-			$('.list-wrapper').css
-					height: height
 
 
 			# getHeight = ->

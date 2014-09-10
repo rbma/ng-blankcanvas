@@ -31,6 +31,11 @@
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
+            height = $(".list-wrapper").innerHeight();
+            console.log(height);
+            $(".list-wrapper").css({
+                height: height
+            });
             sendHeight = function(height) {
                 var message, messageJSON;
                 message = {
@@ -40,11 +45,6 @@
                 console.log(messageJSON);
                 return window.parent.postMessage(messageJSON, "*");
             };
-            height = $(".hero").innerHeight();
-            console.log(height);
-            $(".list-wrapper").css({
-                height: height
-            });
             return sendHeight(height);
         });
         $scope.trust = function(body) {
