@@ -32,9 +32,6 @@
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
             height = $(".list-wrapper").innerHeight();
-            $(".list-wrapper").css({
-                height: height
-            });
             sendHeight = function(height) {
                 var message, messageJSON;
                 console.log(height);
@@ -47,9 +44,6 @@
             sendHeight(height);
             return $(window).on("resize", function() {
                 height = $(".list-wrapper").innerHeight();
-                $(".list-wrapper").css({
-                    height: height
-                });
                 return sendHeight(height);
             });
         });

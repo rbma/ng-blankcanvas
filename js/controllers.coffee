@@ -43,8 +43,7 @@ listControllers.controller('ListDetailCtrl', [
 
 
 			height = $('.list-wrapper').innerHeight()
-			$('.list-wrapper').css
-					height: height
+
 
 			sendHeight = (height) ->
 				console.log height
@@ -57,9 +56,6 @@ listControllers.controller('ListDetailCtrl', [
 
 			$(window).on('resize', ->
 				height = $('.list-wrapper').innerHeight()
-				
-				$('.list-wrapper').css
-					height: height
 				
 				sendHeight(height)
 			)
