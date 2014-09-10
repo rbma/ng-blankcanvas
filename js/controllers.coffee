@@ -48,6 +48,7 @@ listControllers.controller('ListDetailCtrl', [
 				return window.parent.postMessage(messageJSON, '*')
 
 			height = $('.hero').innerHeight()
+			console.log height
 			$('.list-wrapper').css
 					height: height
 
