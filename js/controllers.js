@@ -41,7 +41,10 @@
                 return window.parent.postMessage(messageJSON, "*");
             };
             getHeight = function() {
-                return $(document).height();
+                $(".list-wrapper").css({
+                    height: $(window).height()
+                });
+                return $(window).height();
             };
             lookForResize = function() {};
             setTimeout(lookForResize(), 2e3);
