@@ -34,7 +34,6 @@
             height = $(".list-wrapper").innerHeight();
             sendHeight = function(height) {
                 var message, messageJSON;
-                console.log(height);
                 message = {
                     height: height
                 };

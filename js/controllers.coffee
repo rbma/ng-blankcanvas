@@ -46,7 +46,6 @@ listControllers.controller('ListDetailCtrl', [
 
 
 			sendHeight = (height) ->
-				console.log height
 				message = {height: height}
 				messageJSON = JSON.stringify(message)
 				return window.parent.postMessage(messageJSON, '*');
