@@ -81,6 +81,7 @@ body {
     list-style-type: none;
     padding: none;
     padding-right: 100px;
+    margin-left: 5%;
     text-align: center;
     z-index: 1;
     margin-top: 68px; }
@@ -92,14 +93,14 @@ body {
         position: relative;
         margin-top: -8px;
         text-align: center;
-        width: 200px;
-        height: 300px;
+        width: 150px;
+        height: 225px;
         z-index: 1; }
         .list-wrapper .list-thumbs li .thumb-container .img-container {
           border: 5px solid black;
           overflow: hidden;
-          width: 200px;
-          height: 200px;
+          width: 150px;
+          height: 150px;
           text-align: center;
           background-color: white;
           -webkit-transform: rotate(-45deg);
@@ -107,11 +108,11 @@ body {
           -ms-transform: rotate(-45deg);
           -o-transform: rotate(-45deg);
           transform: rotate(-45deg);
-          -webkit-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-          -moz-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-          -ms-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-          -o-transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-          transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -webkit-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -moz-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -ms-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          -o-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+          transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
           z-index: 5; }
           .list-wrapper .list-thumbs li .thumb-container .img-container span {
             z-index: 9999999999999;
@@ -140,11 +141,11 @@ body {
             -ms-transform: rotate(0);
             -o-transform: rotate(0);
             transform: rotate(0);
-            -webkit-transform: scale(1.5);
-            -moz-transform: scale(1.5);
-            -ms-transform: scale(1.5);
-            -o-transform: scale(1.5);
-            transform: scale(1.5); }
+            -webkit-transform: scale(2);
+            -moz-transform: scale(2);
+            -ms-transform: scale(2);
+            -o-transform: scale(2);
+            transform: scale(2); }
         .list-wrapper .list-thumbs li .thumb-container:hover {
           z-index: 999; }
   .list-wrapper .intro {
@@ -234,7 +235,7 @@ body {
     padding: 0;
     margin-left: 20px; }
     .sidebar .sidebar-list a {
-      margin: 5px;
+      margin: 0;
       text-decoration: none; }
       .sidebar .sidebar-list a .sidebar-item {
         padding: 5px;

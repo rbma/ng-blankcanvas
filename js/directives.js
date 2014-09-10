@@ -12,8 +12,6 @@
                     } else {
                         return $(this).removeClass("sticky");
                     }
-                }, {
-                    offset: 50
                 });
             }
         };

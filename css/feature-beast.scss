@@ -81,6 +81,7 @@ body{
 		list-style-type: none;
 		padding: none;
 		padding-right: 100px;
+		margin-left: 5%;
 		text-align: center;
 		z-index: 1;
 		margin-top: 68px;
@@ -92,19 +93,19 @@ body{
 				position: relative;
 				margin-top: -8px;
 				text-align: center;
-				width: 200px;
-				height: 300px;
+				width: 150px;
+				height: 225px;
 				z-index: 1;
 
 				.img-container{
 					border: 5px solid black;
 					overflow: hidden;
-					width: 200px;
-					height: 200px;
+					width: 150px;
+					height: 150px;
 					text-align: center;
 					background-color: white;
 					@include vendorize(transform, rotate(-45deg));
-					@include vendorize(transition, all .1s cubic-bezier(.17,.67,.83,.67));
+					@include vendorize(transition, all .2s cubic-bezier(.17,.67,.83,.67));
 					z-index: 5;
 					span{
 						z-index: 9999999999999;
@@ -127,7 +128,7 @@ body{
 					}
 					&:hover{
 						@include vendorize(transform, rotate(0));
-						@include vendorize(transform, scale(1.5));
+						@include vendorize(transform, scale(2));
 					}
 				}
 				&:hover{
@@ -242,7 +243,7 @@ body{
 			padding: 0;
 			margin-left: 20px;
 			a{
-				margin: 5px;
+				margin: 0;
 				text-decoration: none;
 				.sidebar-item{
 					padding: 5px;

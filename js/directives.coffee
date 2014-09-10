@@ -11,7 +11,6 @@ listDirectives.directive('sticky', ->
 					$(this).addClass "sticky"
 				else
 					$(this).removeClass "sticky"
-			,{offset: 50}
 
 	}
 

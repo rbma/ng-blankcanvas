@@ -39,19 +39,28 @@ listControllers.controller('ListDetailCtrl', [
 				$scope.list = data[0]
 				console.log $scope.list
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
+			)
 
-		)
+			sendHeight = (height) ->
+				message = {height: height}
+				messageJSON = JSON.stringify(message)
+				console.log messageJSON
+				return window.parent.postMessage(messageJSON, '*')
+
+			getHeight = ->
+				return $(document).height()
+
+			lookForResize = ->
+				window.addEventListener('resize', ->
+					sendHeight(getHeight())
+				)
+
+			setTimeout(lookForResize(), 2000)
+			sendHeight(getHeight())
 		
 
 		$scope.trust = (body) ->
 			return $sce.trustAsHtml(body)
-
-		$scope.gotoBottom = (order) ->
-			old = $location.hash()
-			$location.hash(order)
-			$anchorScroll()
-			#reset to old
-			$location.hash(old)
 
 
 ])
