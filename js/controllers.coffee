@@ -51,9 +51,9 @@ listControllers.controller('ListDetailCtrl', [
 				return $(document).height()
 
 			lookForResize = ->
-				window.addEventListener('resize', ->
-					sendHeight(getHeight())
-				)
+				# window.addEventListener('resize', ->
+				# 	sendHeight(getHeight())
+				# )
 
 			setTimeout(lookForResize(), 2000)
 			sendHeight(getHeight())

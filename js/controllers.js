@@ -43,11 +43,7 @@
             getHeight = function() {
                 return $(document).height();
             };
-            lookForResize = function() {
-                return window.addEventListener("resize", function() {
-                    return sendHeight(getHeight());
-                });
-            };
+            lookForResize = function() {};
             setTimeout(lookForResize(), 2e3);
             return sendHeight(getHeight());
         });
