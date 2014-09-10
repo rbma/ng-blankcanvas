@@ -12,7 +12,7 @@
   <ul class="list-items">
     <li ng-repeat="item in list.fields.individualListItems" class="list-item"><a id="{{item.fields.anchorLinkTag}}"></a>
       <div class="list-container">
-        <div class="list-titles"><span class="item-order">{{item.fields.order}}</span>
+        <div class="list-titles"><span flag="flag" data-order="{{item.fields.order}}" class="item-order">{{item.fields.order}}</span>
           <h3 class="item-title">{{item.fields.title}}</h3>
         </div>
         <div class="item-body">
@@ -22,12 +22,12 @@
       </div>
     </li>
   </ul>
-  <div class="sidebar"><a ng-click="smoothScroll('top')"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
-      <h4 class="radio-picks-sidebar"></h4>
-      <h4 class="author-sidebar">{{list.fields.author}}</h4></a>
-    <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" class="{{item.fields.anchorLinkTag}}">
-        <li class="sidebar-item">
-          <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
-        </li></a></ul>
-  </div><a id="bottom"></a>
 </div>
+<div sticky="sticky" class="sidebar"><a ng-click="smoothScroll('top')"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
+    <h4 class="radio-picks-sidebar"></h4>
+    <h4 class="author-sidebar">{{list.fields.author}}</h4></a>
+  <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" class="{{item.fields.anchorLinkTag}}">
+      <li data-order="{{item.fields.order}}" class="sidebar-item">
+        <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
+      </li></a></ul>
+</div><a id="bottom"></a>

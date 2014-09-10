@@ -19,28 +19,27 @@
 			a(id="{{item.fields.anchorLinkTag}}")
 			.list-container
 				.list-titles
-					span(class="item-order") {{item.fields.order}}
+					span(flag class="item-order" data-order="{{item.fields.order}}") {{item.fields.order}}
 					h3(class="item-title") {{item.fields.title}}
 				.item-body
 					.item-image-wrapper(ng-show="{{item.fields.embedAsImage}}")
 						img(ng-src="{{item.fields.image.fields.file.url}}")
 					p(ng-bind-html="trust(item.fields.body)")
 
-	.sidebar
-		a(ng-click="smoothScroll('top')")
-			img(ng-src="{{list.fields.authorImage.fields.file.url}}")
-			h4(class="radio-picks-sidebar")
-			h4(class="author-sidebar") {{list.fields.author}}
+.sidebar(sticky)
+	a(ng-click="smoothScroll('top')")
+		img(ng-src="{{list.fields.authorImage.fields.file.url}}")
+		h4(class="radio-picks-sidebar")
+		h4(class="author-sidebar") {{list.fields.author}}
 		
-		ul(class="sidebar-list")
-			a(ng-repeat="item in list.fields.individualListItems", 
-				class="{{item.fields.anchorLinkTag}}",
-				href="#{{item.fields.anchorLinkTag}}",
-				du-smooth-scroll,
-				du-scrollspy)
+	ul(class="sidebar-list")
+		a(ng-repeat="item in list.fields.individualListItems", 
+			class="{{item.fields.anchorLinkTag}}",
+			href="#{{item.fields.anchorLinkTag}}",
+			du-smooth-scroll)
 				
-				li(class="sidebar-item")
-					.order {{item.fields.order}}
-					{{item.fields.title}}
+			li(class="sidebar-item" data-order="{{item.fields.order}}")
+				.order {{item.fields.order}}
+				{{item.fields.title}}
 
-	a(id="bottom")
+a(id="bottom")

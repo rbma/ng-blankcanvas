@@ -211,60 +211,64 @@ body {
               left: 0;
               width: 100%;
               height: 100%; }
-  .list-wrapper .sidebar {
+
+.sidebar {
+  position: absolute;
+  top: 40%;
+  left: 20px;
+  width: 17.3333333333%; }
+  .sidebar h4 {
+    margin: 0; }
+  .sidebar img {
+    max-width: 50%;
+    height: auto;
+    margin-left: 20px; }
+  .sidebar .radio-picks-sidebar {
+    margin-left: 20px; }
+    .sidebar .radio-picks-sidebar:after {
+      content: "RBMA Radio Picks"; }
+  .sidebar .author-sidebar {
+    margin-left: 20px; }
+  .sidebar .sidebar-list {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px; }
+    .sidebar .sidebar-list a {
+      margin: 5px;
+      text-decoration: none; }
+      .sidebar .sidebar-list a .sidebar-item {
+        padding: 5px;
+        margin: 0;
+        background-color: transparent;
+        color: black !important; }
+        .sidebar .sidebar-list a .sidebar-item .order {
+          width: 15px;
+          display: inline-block;
+          margin-right: 5px;
+          text-align: center;
+          line-height: 15px;
+          height: 15px;
+          border: 2px solid black;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%; }
+        .sidebar .sidebar-list a .sidebar-item:hover {
+          background-color: black;
+          color: white !important; }
+          .sidebar .sidebar-list a .sidebar-item:hover .order {
+            border: 2px solid white !important; }
+        .sidebar .sidebar-list a .sidebar-item.active {
+          background-color: black;
+          color: white !important; }
+          .sidebar .sidebar-list a .sidebar-item.active .order {
+            border: 2px solid white !important; }
+      .sidebar .sidebar-list a.active {
+        color: blue; }
+  .sidebar.sticky {
     position: fixed;
-    top: 40%;
-    left: 20px;
-    width: 17.3333333333%; }
-    .list-wrapper .sidebar h4 {
-      margin: 0; }
-    .list-wrapper .sidebar img {
-      max-width: 50%;
-      height: auto;
-      margin-left: 20px; }
-    .list-wrapper .sidebar .radio-picks-sidebar {
-      margin-left: 20px; }
-      .list-wrapper .sidebar .radio-picks-sidebar:after {
-        content: "RBMA Radio Picks"; }
-    .list-wrapper .sidebar .author-sidebar {
-      margin-left: 20px; }
-    .list-wrapper .sidebar .sidebar-list {
-      list-style-type: none;
-      padding: 0;
-      margin-left: 20px; }
-      .list-wrapper .sidebar .sidebar-list a {
-        margin: 5px;
-        text-decoration: none; }
-        .list-wrapper .sidebar .sidebar-list a .sidebar-item {
-          padding: 5px;
-          margin: 0;
-          background-color: transparent;
-          color: black !important; }
-          .list-wrapper .sidebar .sidebar-list a .sidebar-item .order {
-            width: 15px;
-            display: inline-block;
-            margin-right: 5px;
-            text-align: center;
-            line-height: 15px;
-            height: 15px;
-            border: 2px solid black;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            -ms-border-radius: 50%;
-            -o-border-radius: 50%;
-            border-radius: 50%; }
-          .list-wrapper .sidebar .sidebar-list a .sidebar-item:hover {
-            background-color: black;
-            color: white !important; }
-            .list-wrapper .sidebar .sidebar-list a .sidebar-item:hover .order {
-              border: 2px solid white !important; }
-          .list-wrapper .sidebar .sidebar-list a .sidebar-item.active {
-            background-color: black;
-            color: white !important; }
-            .list-wrapper .sidebar .sidebar-list a .sidebar-item.active .order {
-              border: 2px solid white !important; }
-        .list-wrapper .sidebar .sidebar-list a.active {
-          color: blue; }
+    top: 20px; }
 
 @media screen and (max-width: 600px) {
   .list-wrapper {

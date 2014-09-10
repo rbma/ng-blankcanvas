@@ -212,9 +212,11 @@ body{
 			}
 		}
 	}
+}
 
-	.sidebar{
-		position: fixed;
+
+.sidebar{
+		position: absolute;
 		top: 40%;
 		left: 20px;
 		width: 17.3333333333%;
@@ -277,8 +279,11 @@ body{
 				}
 			}
 		}
+		&.sticky{
+			position: fixed;
+			top: 20px;
+		}
 	}
-}
 
 @media screen and (max-width: 600px){
 
