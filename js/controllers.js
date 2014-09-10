@@ -44,7 +44,14 @@
                 messageJSON = JSON.stringify(message);
                 return window.parent.postMessage(messageJSON, "*");
             };
-            return sendHeight(height);
+            sendHeight(height);
+            return $(window).on("resize", function() {
+                height = $(".list-wrapper").innerHeight();
+                $(".list-wrapper").css({
+                    height: height
+                });
+                return sendHeight(height);
+            });
         });
         $scope.trust = function(body) {
             return $sce.trustAsHtml(body);

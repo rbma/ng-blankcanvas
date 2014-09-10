@@ -50,15 +50,19 @@ listControllers.controller('ListDetailCtrl', [
 				console.log height
 				message = {height: height}
 				messageJSON = JSON.stringify(message)
-				return window.parent.postMessage(messageJSON, '*')
+				return window.parent.postMessage(messageJSON, '*');
 
-
-			# getHeight = ->
-				
-			# 	console.log $(document.body).height()
-			# 	return $(document).height()
 
 			sendHeight(height)
+
+			$(window).on('resize', ->
+				height = $('.list-wrapper').innerHeight()
+				
+				$('.list-wrapper').css
+					height: height
+				
+				sendHeight(height)
+			)
 		
 
 		$scope.trust = (body) ->
