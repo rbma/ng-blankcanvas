@@ -54,11 +54,10 @@ listControllers.controller('ListDetailCtrl', [
 
 			sendHeight(height)
 
-			# $(window).on('resize', ->
-			# 	height = $('.list-wrapper').innerHeight()
+			$(window).on('resize', ->
 				
-			# 	sendHeight(height)
-			# )
+				sendHeight(height)
+			)
 		
 
 		$scope.trust = (body) ->
