@@ -6,9 +6,9 @@
 	ul(class="list-thumbs")
 		li(ng-repeat="entry in list.fields.individualListItems")
 			.thumb-container
-				span(class="order") {{entry.fields.order}}
-				a(ng-click="smoothScroll(entry.fields.anchorLinkTag)")
+				a(href="#{{entry.fields.anchorLinkTag}}", du-smooth-scroll)
 					.img-container
+						span(class="order") {{entry.fields.order}}
 						img(ng-src="{{entry.fields.image.fields.file.url}}")
 
 	p(class="intro", ng-bind-html="trust(list.entry[0].fields.body)")
@@ -31,10 +31,16 @@
 			img(ng-src="{{list.fields.authorImage.fields.file.url}}")
 			h4(class="radio-picks-sidebar")
 			h4(class="author-sidebar") {{list.fields.author}}
+		
 		ul(class="sidebar-list")
-			a(class="{{item.fields.anchorLinkTag}} order", ng-click="smoothScroll(item.fields.anchorLinkTag)")
-				li(class="sidebar-item", ng-repeat="item in list.fields.individualListItems")
-					{{item.fields.order}}
+			a(ng-repeat="item in list.fields.individualListItems", 
+				class="{{item.fields.anchorLinkTag}}",
+				href="#{{item.fields.anchorLinkTag}}",
+				du-smooth-scroll,
+				du-scrollspy)
+				
+				li(class="sidebar-item")
+					.order {{item.fields.order}}
 					{{item.fields.title}}
 
 	a(id="bottom")

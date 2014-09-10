@@ -1,11 +1,12 @@
 'use strict'
 
-app = angular.module('textfeature', [
+app = angular.module('listfeature', [
 	'ngRoute',
 	'ngSanitize',
 	'listControllers',
 	'listDirectives',
-	'ui.utils'
+	'ui.utils',
+	'duScroll'
 ])
 
 

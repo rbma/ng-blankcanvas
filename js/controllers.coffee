@@ -39,7 +39,6 @@ listControllers.controller('ListDetailCtrl', [
 				$scope.list = data[0]
 				console.log $scope.list
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
-				wrapIframes()
 
 		)
 		
@@ -53,15 +52,6 @@ listControllers.controller('ListDetailCtrl', [
 			$anchorScroll()
 			#reset to old
 			$location.hash(old)
-
-		container = angular.element(document.getElementById('container'))
-
-		$scope.smoothScroll = (element) ->
-			elementLoc = $("##{element}").offset().top
-			$('html, body').animate
-				scrollTop: elementLoc
-			, 300
-			return false
 
 
 ])

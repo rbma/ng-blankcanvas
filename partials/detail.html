@@ -4,8 +4,8 @@
   <h1 class="author">{{list.fields.author}}</h1>
   <ul class="list-thumbs">
     <li ng-repeat="entry in list.fields.individualListItems">
-      <div class="thumb-container"><span class="order">{{entry.fields.order}}</span><a ng-click="smoothScroll(entry.fields.anchorLinkTag)">
-          <div class="img-container"><img ng-src="{{entry.fields.image.fields.file.url}}"/></div></a></div>
+      <div class="thumb-container"><a href="#{{entry.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll">
+          <div class="img-container"><span class="order">{{entry.fields.order}}</span><img ng-src="{{entry.fields.image.fields.file.url}}"/></div></a></div>
     </li>
   </ul>
   <p ng-bind-html="trust(list.entry[0].fields.body)" class="intro"></p>
@@ -25,10 +25,9 @@
   <div class="sidebar"><a ng-click="smoothScroll('top')"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
       <h4 class="radio-picks-sidebar"></h4>
       <h4 class="author-sidebar">{{list.fields.author}}</h4></a>
-    <ul class="sidebar-list"><a ng-click="smoothScroll(item.fields.anchorLinkTag)" class="{{item.fields.anchorLinkTag}} order">
-        <li ng-repeat="item in list.fields.individualListItems" class="sidebar-item">
-          {{item.fields.order}}
-          {{item.fields.title}}
+    <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" class="{{item.fields.anchorLinkTag}}">
+        <li class="sidebar-item">
+          <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
         </li></a></ul>
   </div><a id="bottom"></a>
 </div>
