@@ -42,7 +42,7 @@ listControllers.controller('ListDetailCtrl', [
 			)
 
 
-			height = $('.list-wrapper').innerHeight()
+			height = $(document).innerHeight()
 
 
 			sendHeight = (height) ->
