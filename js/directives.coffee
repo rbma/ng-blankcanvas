@@ -13,7 +13,6 @@ listDirectives.directive('sticky', ->
 			# }
 			$('.sidebar').waypoint (direction) ->
 				if direction == 'down'
-					alert 'hit'
 					$('.sidebar').addClass "sticky"
 				else
 					$('.sidebar').removeClass "sticky"
