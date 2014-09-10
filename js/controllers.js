@@ -25,7 +25,7 @@
             "sys.id": $routeParams.listId,
             include: 10
         }).done(function(data) {
-            var getHeight, lookForResize, sendHeight;
+            var height, sendHeight;
             $scope.$apply(function() {
                 $scope.list = data[0];
                 console.log($scope.list);
@@ -40,16 +40,11 @@
                 console.log(messageJSON);
                 return window.parent.postMessage(messageJSON, "*");
             };
-            getHeight = function() {
-                $(".list-wrapper").css({
-                    height: $(document).height()
-                });
-                console.log($(document).height());
-                return $(document).height();
-            };
-            lookForResize = function() {};
-            setTimeout(lookForResize(), 2e3);
-            return sendHeight(getHeight());
+            height = $(".hero").innerHeight();
+            $(".list-wrapper").css({
+                height: height
+            });
+            return sendHeight(height);
         });
         return $scope.trust = function(body) {
             return $sce.trustAsHtml(body);

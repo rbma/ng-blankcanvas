@@ -47,19 +47,17 @@ listControllers.controller('ListDetailCtrl', [
 				console.log messageJSON
 				return window.parent.postMessage(messageJSON, '*')
 
-			getHeight = ->
-				$('.list-wrapper').css
-					height: $(document).height()
-				console.log $(document).height()
-				return $(document).height()
+			height = $('.hero').innerHeight()
+			$('.list-wrapper').css
+					height: height
 
-			lookForResize = ->
-				# window.addEventListener('resize', ->
-				# 	sendHeight(getHeight())
-				# )
 
-			setTimeout(lookForResize(), 2000)
-			sendHeight(getHeight())
+			# getHeight = ->
+				
+			# 	console.log $(document.body).height()
+			# 	return $(document).height()
+
+			sendHeight(height)
 		
 
 		$scope.trust = (body) ->
