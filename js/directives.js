@@ -9,9 +9,9 @@
                 return $(".sidebar").waypoint(function(direction) {
                     if (direction === "down") {
                         alert("hit");
-                        return $(this).addClass("sticky");
+                        return $(".sidebar").addClass("sticky");
                     } else {
-                        return $(this).removeClass("sticky");
+                        return $(".sidebar").removeClass("sticky");
                     }
                 });
             }
