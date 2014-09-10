@@ -6,6 +6,11 @@ listDirectives.directive('sticky', ->
 		restrict: 'A'
 		replace: false
 		link: ->
+
+
+			# $.fn.waypoint.defaults = {
+			# 	context: 
+			# }
 			$('.sidebar').waypoint (direction) ->
 				if direction == 'down'
 					alert 'hit'

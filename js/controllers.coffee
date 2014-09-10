@@ -43,14 +43,13 @@ listControllers.controller('ListDetailCtrl', [
 
 
 			height = $('.list-wrapper').innerHeight()
-			console.log height
 			$('.list-wrapper').css
 					height: height
 
 			sendHeight = (height) ->
+				console.log height
 				message = {height: height}
 				messageJSON = JSON.stringify(message)
-				console.log messageJSON
 				return window.parent.postMessage(messageJSON, '*')
 
 
