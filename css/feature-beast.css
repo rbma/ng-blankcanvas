@@ -76,8 +76,8 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   margin-top: 0;
-  margin: 0 0 auto 10%;
-  width: 90%;
+  margin: 0 0 auto 0;
+  width: 100%;
   -webkit-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
   -ms-transition: opacity 0.3s;
@@ -86,17 +86,19 @@ body {
   .list-wrapper .rbma-radio-picks {
     font-size: 2em;
     border-bottom: 5px solid black;
-    width: 100%; }
+    width: 100%;
+    margin-left: 10%; }
     .list-wrapper .rbma-radio-picks:after {
       content: 'RBMA Radio Picks'; }
   .list-wrapper .author {
     font-size: 4em;
-    margin: 0; }
+    margin: 0;
+    margin-left: 10%; }
   .list-wrapper .list-thumbs {
     list-style-type: none;
     padding: none;
     padding-right: 100px;
-    margin-left: 5%;
+    margin-left: 15%;
     text-align: center;
     z-index: 1;
     margin-top: 68px; }
@@ -170,7 +172,7 @@ body {
     line-height: 1.5; }
   .list-wrapper .list-items {
     width: 66.6666666666%;
-    margin-left: 15.33333333333%;
+    margin-left: 20%;
     font-size: 1.7em;
     line-height: 1.5;
     list-style-type: none;

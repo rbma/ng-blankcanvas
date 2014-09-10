@@ -63,6 +63,13 @@ listControllers.controller('ListDetailCtrl', [
 		$scope.trust = (body) ->
 			return $sce.trustAsHtml(body)
 
+		$scope.gotoBottom = (order) ->
+			old = $location.hash()
+			$location.hash(order)
+			$anchorScroll()
+			#reset to old
+			$location.hash(old)
+
 
 ])
 

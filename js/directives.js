@@ -8,6 +8,7 @@
             link: function() {
                 return $(".sidebar").waypoint(function(direction) {
                     if (direction === "down") {
+                        alert("hit");
                         return $(this).addClass("sticky");
                     } else {
                         return $(this).removeClass("sticky");

@@ -46,8 +46,15 @@
             });
             return sendHeight(height);
         });
-        return $scope.trust = function(body) {
+        $scope.trust = function(body) {
             return $sce.trustAsHtml(body);
+        };
+        return $scope.gotoBottom = function(order) {
+            var old;
+            old = $location.hash();
+            $location.hash(order);
+            $anchorScroll();
+            return $location.hash(old);
         };
     } ]);
 }).call(this);

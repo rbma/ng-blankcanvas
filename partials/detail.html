@@ -1,6 +1,6 @@
 
 <div class="hero"></div>
-<div id="top" class="list-wrapper">
+<div id="top" du-scroll-container="du-scroll-container" class="list-wrapper">
   <div class="rbma-radio-picks"></div>
   <h1 class="author">{{list.fields.author}}</h1>
   <ul class="list-thumbs">
@@ -23,12 +23,12 @@
       </div>
     </li>
   </ul>
+  <div sticky="sticky" class="sidebar"><a ng-click="smoothScroll('top')"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
+      <h4 class="radio-picks-sidebar"></h4>
+      <h4 class="author-sidebar">{{list.fields.author}}</h4></a>
+    <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" class="{{item.fields.anchorLinkTag}}">
+        <li data-order="{{item.fields.order}}" class="sidebar-item">
+          <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
+        </li></a></ul>
+  </div>
 </div>
-<div sticky="sticky" class="sidebar"><a ng-click="smoothScroll('top')"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
-    <h4 class="radio-picks-sidebar"></h4>
-    <h4 class="author-sidebar">{{list.fields.author}}</h4></a>
-  <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" class="{{item.fields.anchorLinkTag}}">
-      <li data-order="{{item.fields.order}}" class="sidebar-item">
-        <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
-      </li></a></ul>
-</div><a id="bottom"></a>
