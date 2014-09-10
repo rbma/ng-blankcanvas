@@ -31,7 +31,7 @@
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
-            height = $(document).innerHeight();
+            height = $(".list-wrapper").innerHeight();
             sendHeight = function(height) {
                 var message, messageJSON;
                 message = {
