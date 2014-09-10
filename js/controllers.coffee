@@ -49,8 +49,9 @@ listControllers.controller('ListDetailCtrl', [
 
 			getHeight = ->
 				$('.list-wrapper').css
-					height: $(window).height()
-				return $(window).height()
+					height: $(document).height()
+				console.log $(document).height()
+				return $(document).height()
 
 			lookForResize = ->
 				# window.addEventListener('resize', ->

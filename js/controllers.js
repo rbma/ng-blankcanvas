@@ -42,9 +42,10 @@
             };
             getHeight = function() {
                 $(".list-wrapper").css({
-                    height: $(window).height()
+                    height: $(document).height()
                 });
-                return $(window).height();
+                console.log($(document).height());
+                return $(document).height();
             };
             lookForResize = function() {};
             setTimeout(lookForResize(), 2e3);
