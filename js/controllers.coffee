@@ -48,10 +48,11 @@ listControllers.controller('ListDetailCtrl', [
 			sendHeight = (height) ->
 				message = {height: height}
 				messageJSON = JSON.stringify(message)
+				console.log messageJSON
 				return window.parent.postMessage(messageJSON, '*');
 
 
-			sendHeight(height)
+			setTimeout(sendHeight(height), 2000)
 
 			$(window).on('resize', ->
 				

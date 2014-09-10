@@ -38,9 +38,10 @@
                     height: height
                 };
                 messageJSON = JSON.stringify(message);
+                console.log(messageJSON);
                 return window.parent.postMessage(messageJSON, "*");
             };
-            sendHeight(height);
+            setTimeout(sendHeight(height), 2e3);
             return $(window).on("resize", function() {
                 return sendHeight(height);
             });
