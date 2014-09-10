@@ -42,7 +42,7 @@ listControllers.controller('ListDetailCtrl', [
 			)
 
 
-			height = $('.list-wrapper').innerHeight()
+			height = $('.frame-body').innerHeight()
 
 
 			sendHeight = (height) ->
@@ -52,7 +52,7 @@ listControllers.controller('ListDetailCtrl', [
 				return window.parent.postMessage(messageJSON, '*');
 
 
-			setTimeout(sendHeight(height), 2000)
+			sendHeight(height)
 
 			$(window).on('resize', ->
 				
