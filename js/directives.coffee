@@ -7,7 +7,7 @@ listDirectives.directive('sendHeight', ->
 		link: ->
 
 			height = $('.list-wrapper').innerHeight()
-			console.log $(window).height()
+			console.log parent.$(window).height()
 
 
 			reset = ->
