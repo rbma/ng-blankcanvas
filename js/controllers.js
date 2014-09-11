@@ -18,9 +18,20 @@
             });
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", function($scope, $routeParams, $http, $location, $anchorScroll, $sce) {
-        var addWaypoints, converter;
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", function($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress) {
+        var addWaypoints, converter, removeSpinner;
         converter = new Showdown.converter();
+        ngProgress.height("10px");
+        ngProgress.color("#ffffff");
+        ngProgress.start();
+        removeSpinner = function() {
+            ngProgress.complete();
+            return $("#spinner").animate({
+                opacity: 0
+            }, 600, function() {
+                return $("#spinner").remove();
+            });
+        };
         addWaypoints = function() {
             return $("a.item-order").waypoint({
                 context: ".frame",
@@ -47,7 +58,8 @@
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
-            return addWaypoints();
+            addWaypoints();
+            return setTimeout(removeSpinner, 2e3);
         });
         $scope.trust = function(body) {
             return $sce.trustAsHtml(body);

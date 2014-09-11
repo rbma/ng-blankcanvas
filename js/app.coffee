@@ -6,7 +6,8 @@ app = angular.module('listfeature', [
 	'listControllers',
 	'listDirectives',
 	'ui.utils',
-	'duScroll'
+	'duScroll',
+	'ngProgress'
 ])
 
 

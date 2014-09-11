@@ -1,4 +1,7 @@
 
+<div id="spinner">
+  <h1>Loading</h1>
+</div>
 <div du-scroll-container="du-scroll-container" class="frame">
   <div id="top" send-height="send-height" class="list-wrapper">
     <div class="rbma-radio-picks"></div>
@@ -11,7 +14,7 @@
     </ul>
     <p ng-bind-html="trust(list.entry[0].fields.body)" class="intro"></p>
     <ul class="list-items">
-      <li flag="flag" ng-repeat="item in list.fields.individualListItems" class="list-item">
+      <li ng-repeat="item in list.fields.individualListItems" class="list-item">
         <div class="list-container">
           <div class="list-titles"><a id="{{item.fields.anchorLinkTag}}" data-order="{{item.fields.order}}" class="item-order"></a><span>{{item.fields.order}}</span>
             <h3 class="item-title">{{item.fields.title}}</h3>

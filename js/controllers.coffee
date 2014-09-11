@@ -28,9 +28,23 @@ listControllers.controller('ListDetailCtrl', [
 	'$location',
 	'$anchorScroll',
 	'$sce',
-	($scope, $routeParams, $http, $location, $anchorScroll, $sce) ->
+	'ngProgress',
+	($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress) ->
 		
 		converter = new Showdown.converter()
+
+		ngProgress.height('10px')
+		ngProgress.color('#ffffff')
+
+		ngProgress.start()
+
+		removeSpinner = ->
+			ngProgress.complete()
+			$('#spinner').animate
+				opacity: 0
+			, 600, ->
+				$('#spinner').remove()
+
 
 		addWaypoints = ->
 			$('a.item-order').waypoint({
@@ -59,6 +73,8 @@ listControllers.controller('ListDetailCtrl', [
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
 			)
 			addWaypoints()
+
+			setTimeout(removeSpinner, 2000)
 
 			
 		$scope.trust = (body) ->

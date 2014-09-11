@@ -1,3 +1,6 @@
+div(id="spinner")
+	h1 Loading
+
 .frame(du-scroll-container)
 	.list-wrapper(id="top" send-height)
 		.rbma-radio-picks
@@ -16,7 +19,7 @@
 
 
 		ul(class="list-items")
-			li(flag class="list-item", ng-repeat="item in list.fields.individualListItems")
+			li(class="list-item", ng-repeat="item in list.fields.individualListItems")
 				.list-container
 					.list-titles
 						a(id="{{item.fields.anchorLinkTag}}" class="item-order" data-order="{{item.fields.order}}")

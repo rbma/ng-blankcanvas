@@ -63,6 +63,17 @@ body {
   top: 0;
   left: 0; }
 
+#spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  background-color: black;
+  color: white;
+  z-index: 9999999999999; }
+
 .list-wrapper {
   position: absolute;
   display: block;
@@ -108,7 +119,7 @@ body {
         z-index: 1; }
         .list-wrapper .list-thumbs li .thumb-container .img-container {
           border: 5px solid black;
-          overflow: hidden;
+          overflow: hidden !important;
           width: 150px;
           height: 150px;
           text-align: center;
@@ -144,6 +155,8 @@ body {
             line-height: 15px; }
           .list-wrapper .list-thumbs li .thumb-container .img-container img {
             height: 100%;
+            width: 100%;
+            max-width: 100%;
             width: auto; }
           .list-wrapper .list-thumbs li .thumb-container .img-container:hover {
             -webkit-transform: rotate(0);
