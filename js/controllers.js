@@ -35,6 +35,7 @@
         addWaypoints = function() {
             return $("a.item-order-link").waypoint({
                 context: ".frame",
+                offset: 20,
                 handler: function(direction) {
                     var order;
                     if (direction === "down") {

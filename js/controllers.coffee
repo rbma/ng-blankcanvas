@@ -49,6 +49,7 @@ listControllers.controller('ListDetailCtrl', [
 		addWaypoints = ->
 			$('a.item-order-link').waypoint({
 					context: '.frame'
+					offset: 20
 					handler: (direction) ->
 						if direction == 'down'
 							order = $(this).data('order')
