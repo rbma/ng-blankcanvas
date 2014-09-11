@@ -25,7 +25,6 @@ listDirectives.directive('sendHeight', ->
 			sendHeight(height)
 
 			$(window).on('resize', ->
-				height = $('.full-width').innerHeight()
 				sendHeight(height)
 			)
 	}

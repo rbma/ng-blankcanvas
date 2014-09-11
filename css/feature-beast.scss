@@ -60,15 +60,7 @@ body{
 	height: 100%;
 }
 
-.full-width{
-	width: 100%;
-	max-width: 100%;
-	display: block;
-	overflow-x:hidden;
-	img{
-		max-width: 100%;
-	}
-}
+
 
 .list-wrapper{
 	position: relative;
@@ -76,7 +68,6 @@ body{
 	overflow-x: hidden;
 	overflow-y: scroll;
 	margin: 0;
-	height: 8888px;
 	padding-top: 58px;
 	@include vendorize(transition, opacity 0.3s);
 	.rbma-radio-picks{
@@ -235,7 +226,7 @@ body{
 
 .sidebar{
 		position: absolute;
-		top: 225px;
+		top: 22px;
 		left: 10px;
 		width: 17.3333333333%;
 		h4{
