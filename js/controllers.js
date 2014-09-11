@@ -19,17 +19,35 @@
         });
     } ]);
     listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", function($scope, $routeParams, $http, $location, $anchorScroll, $sce) {
-        var converter;
+        var addWaypoints, converter;
         converter = new Showdown.converter();
+        addWaypoints = function() {
+            return $("a.item-order").waypoint({
+                context: ".frame",
+                handler: function(direction) {
+                    var order;
+                    if (direction === "down") {
+                        order = $(this).data("order");
+                        $(".sidebar-item").removeClass("active");
+                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
+                    } else {
+                        order = $(this).data("order");
+                        $(".sidebar-item").removeClass("active");
+                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
+                    }
+                }
+            });
+        };
         client.entries({
             "sys.id": $routeParams.listId,
             include: 10
         }).done(function(data) {
-            return $scope.$apply(function() {
+            $scope.$apply(function() {
                 $scope.list = data[0];
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
+            return addWaypoints();
         });
         $scope.trust = function(body) {
             return $sce.trustAsHtml(body);

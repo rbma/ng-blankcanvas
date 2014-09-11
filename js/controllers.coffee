@@ -32,6 +32,24 @@ listControllers.controller('ListDetailCtrl', [
 		
 		converter = new Showdown.converter()
 
+		addWaypoints = ->
+			$('a.item-order').waypoint({
+					context: '.frame'
+					handler: (direction) ->
+						if direction == 'down'
+							order = $(this).data('order')
+
+							#clear actives
+							$('.sidebar-item').removeClass "active"
+							$(".sidebar-item[data-order=#{order}]").addClass "active"
+						else
+							order = $(this).data('order')
+							#clear
+							$('.sidebar-item').removeClass "active"
+							$(".sidebar-item[data-order=#{order}]").addClass "active"
+
+				})
+
 
 
 		client.entries({'sys.id': $routeParams.listId, 'include': 10}).done (data) ->
@@ -40,6 +58,7 @@ listControllers.controller('ListDetailCtrl', [
 				console.log $scope.list
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
 			)
+			addWaypoints()
 
 			
 		$scope.trust = (body) ->

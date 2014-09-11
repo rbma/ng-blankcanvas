@@ -16,11 +16,11 @@
 
 
 		ul(class="list-items")
-			li(class="list-item", ng-repeat="item in list.fields.individualListItems")
-				a(id="{{item.fields.anchorLinkTag}}")
+			li(flag class="list-item", ng-repeat="item in list.fields.individualListItems")
 				.list-container
 					.list-titles
-						span(flag class="item-order" data-order="{{item.fields.order}}") {{item.fields.order}}
+						a(id="{{item.fields.anchorLinkTag}}" class="item-order" data-order="{{item.fields.order}}")
+						span {{item.fields.order}}
 						h3(class="item-title") {{item.fields.title}}
 					.item-body
 						.item-image-wrapper(ng-show="{{item.fields.embedAsImage}}")
