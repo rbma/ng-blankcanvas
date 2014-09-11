@@ -68,8 +68,6 @@ body {
 .list-wrapper {
   position: relative;
   display: block;
-  overflow-x: hidden;
-  overflow-y: scroll;
   margin: 0;
   height: 8888px;
   padding-top: 58px;
