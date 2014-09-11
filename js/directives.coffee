@@ -15,8 +15,13 @@ listDirectives.directive('sendHeight', ->
 			# $('.list-wrapper').css
 			# 	height: height
 
+			parentDocHeight = parent.getDocumentHeight()
+
+			console.log "Parent height: #{parentDocHeight}"
+
 			getHeight = ->
-				return $(document.body).height()
+
+				return $(document).height()
 
 			sendHeight = (height) ->
 				message = {height: height}

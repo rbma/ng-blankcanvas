@@ -6,9 +6,11 @@
             restrict: "A",
             replace: false,
             link: function() {
-                var getHeight, sendHeight;
+                var getHeight, parentDocHeight, sendHeight;
+                parentDocHeight = parent.getDocumentHeight();
+                console.log("Parent height: " + parentDocHeight);
                 getHeight = function() {
-                    return $(document.body).height();
+                    return $(document).height();
                 };
                 sendHeight = function(height) {
                     var message, messageJSON;
