@@ -21,6 +21,7 @@
                     };
                     messageJSON = JSON.stringify(message);
                     console.log(messageJSON);
+                    console.log(parent.document.body.clientHeight);
                     return window.parent.postMessage(messageJSON, "*");
                 };
                 sendHeight(height);
