@@ -8,7 +8,7 @@
             link: function() {
                 var height, reset, sendHeight;
                 height = $(".list-wrapper").innerHeight();
-                console.log(height);
+                console.log($(window).height());
                 reset = function() {
                     height = $(".list-wrapper").innerHeight();
                     return sendHeight(height);
@@ -22,10 +22,7 @@
                     console.log(messageJSON);
                     return window.parent.postMessage(messageJSON, "*");
                 };
-                sendHeight(height);
-                return $(window).on("resize", function() {
-                    return reset();
-                });
+                return sendHeight(height);
             }
         };
     });

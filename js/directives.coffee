@@ -6,15 +6,9 @@ listDirectives.directive('sendHeight', ->
 		replace: false
 		link: ->
 
-			# $('.list-wrapper').css
-			# 	height: '100%'
-
 			height = $('.list-wrapper').innerHeight()
-			console.log height
-			# height = $(document.body).height()
+			console.log $(window).height()
 
-			# $('.list-wrapper').css
-			# 	height: height
 
 			reset = ->
 				height = $('.list-wrapper').innerHeight()
@@ -29,9 +23,9 @@ listDirectives.directive('sendHeight', ->
 
 			sendHeight(height)
 
-			$(window).on('resize', ->
-				reset()
-			)
+			# $(window).on('resize', ->
+			# 	reset()
+			# )
 	}
 )
 
