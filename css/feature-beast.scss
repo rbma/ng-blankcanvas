@@ -56,16 +56,25 @@ body{
 	}
 }
 
+.ng-scope{
+	height: 100%;
+}
 
-.frame-wrapper{
+.full-width{
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	overflow-x:hidden;
+	img{
+		max-width: 100%;
+	}
+}
+
+.list-wrapper{
 	position: relative;
 	display: block;
 	overflow-x: hidden;
 	overflow-y: scroll;
-}
-.list-wrapper{
-	position: relative;
-	display: block;
 	margin: 0;
 	padding-top: 58px;
 	@include vendorize(transition, opacity 0.3s);

@@ -7,10 +7,10 @@
             replace: false,
             link: function() {
                 var height, sendHeight;
-                $(".frame-wrapper").css({
+                $(".list-wrapper").css({
                     height: "8888px"
                 });
-                height = $(".frame-wrapper").innerHeight();
+                height = $(".list-wrapper").innerHeight();
                 $(".list-wrapper").css({
                     height: height
                 });
