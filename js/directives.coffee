@@ -9,7 +9,7 @@ listDirectives.directive('sendHeight', ->
 			$('.frame-wrapper').css
 				height: '8888px'
 
-			height = $('.list-wrapper').innerHeight()
+			height = $('.frame-wrapper').innerHeight()
 
 			$('.list-wrapper').css
 				height: height
