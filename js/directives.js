@@ -6,14 +6,10 @@
             restrict: "A",
             replace: false,
             link: function() {
-                var height, sendHeight;
-                $(".list-wrapper").css({
-                    height: "100%"
-                });
-                height = $(".list-wrapper").innerHeight();
-                $(".list-wrapper").css({
-                    height: height
-                });
+                var getHeight, sendHeight;
+                getHeight = function() {
+                    return $(document.body).height();
+                };
                 sendHeight = function(height) {
                     var message, messageJSON;
                     message = {
@@ -23,10 +19,9 @@
                     console.log(messageJSON);
                     return window.parent.postMessage(messageJSON, "*");
                 };
-                sendHeight(height);
+                sendHeight(getHeight());
                 return $(window).on("resize", function() {
-                    height = $(".list-wrapper").innerHeight();
-                    return sendHeight(height);
+                    return sendHeight(getHeight());
                 });
             }
         };
