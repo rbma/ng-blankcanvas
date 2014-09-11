@@ -54,9 +54,6 @@ body {
             max-width: 100%;
             height: auto; }
 
-.ng-scope {
-  height: 100%; }
-
 .list-wrapper {
   position: relative;
   display: block;
