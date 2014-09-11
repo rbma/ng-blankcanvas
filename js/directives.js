@@ -25,6 +25,7 @@
                 };
                 sendHeight(height);
                 return $(window).on("resize", function() {
+                    height = $(".list-wrapper").innerHeight();
                     return sendHeight(height);
                 });
             }
