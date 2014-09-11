@@ -59,14 +59,16 @@ body {
   min-height: 700px;
   overflow-x: hidden;
   overflow-y: scroll;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0; }
 
 .list-wrapper {
-  position: relative;
+  position: absolute;
   display: block;
   margin: 0;
+  top: 0;
+  left: 0;
   padding-top: 58px;
   min-height: 100%;
   -webkit-transition: opacity 0.3s;
@@ -223,7 +225,7 @@ body {
 
 .sidebar {
   position: absolute;
-  top: 22px;
+  top: 250px;
   left: 10px;
   width: 17.3333333333%; }
   .sidebar h4 {

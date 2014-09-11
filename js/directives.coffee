@@ -37,16 +37,14 @@ listDirectives.directive('sticky', ->
 		replace: false
 		link: ->
 
-
-			# $.fn.waypoint.defaults = {
-			# 	context: 
-			# }
-			$('.sidebar').waypoint (direction) ->
-				if direction == 'down'
-					$('.sidebar').addClass "sticky"
-				else
-					$('.sidebar').removeClass "sticky"
-
+			$('.sidebar').waypoint({
+				context: '.frame'
+				handler: (direction) ->
+					if direction == 'down'
+						$('.sidebar').addClass "sticky"
+					else
+						$('.sidebar').removeClass "sticky"
+			})
 	}
 
 )

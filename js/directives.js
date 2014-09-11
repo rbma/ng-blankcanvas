@@ -34,11 +34,14 @@
             restrict: "A",
             replace: false,
             link: function() {
-                return $(".sidebar").waypoint(function(direction) {
-                    if (direction === "down") {
-                        return $(".sidebar").addClass("sticky");
-                    } else {
-                        return $(".sidebar").removeClass("sticky");
+                return $(".sidebar").waypoint({
+                    context: ".frame",
+                    handler: function(direction) {
+                        if (direction === "down") {
+                            return $(".sidebar").addClass("sticky");
+                        } else {
+                            return $(".sidebar").removeClass("sticky");
+                        }
                     }
                 });
             }
