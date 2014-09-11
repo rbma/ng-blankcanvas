@@ -8,7 +8,7 @@
             link: function() {
                 var height, sendHeight;
                 $(".full-width").css({
-                    height: "100%"
+                    height: "8888px"
                 });
                 height = $(".full-width").innerHeight();
                 $(".list-wrapper").css({
