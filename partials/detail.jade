@@ -21,8 +21,8 @@ div(id="spinner")
 			li(class="list-item", ng-repeat="item in list.fields.individualListItems")
 				.list-container
 					.list-titles
-						a(id="{{item.fields.anchorLinkTag}}" class="item-order" data-order="{{item.fields.order}}")
-						span {{item.fields.order}}
+						a(id="{{item.fields.anchorLinkTag}}" class="item-order-link" data-order="{{item.fields.order}}")
+						span(class="item-order") {{item.fields.order}}
 						h3(class="item-title") {{item.fields.title}}
 					.item-body
 						.item-image-wrapper(ng-show="{{item.fields.embedAsImage}}")

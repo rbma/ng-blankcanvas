@@ -33,7 +33,7 @@
             });
         };
         addWaypoints = function() {
-            return $("a.item-order").waypoint({
+            return $("a.item-order-link").waypoint({
                 context: ".frame",
                 handler: function(direction) {
                     var order;
