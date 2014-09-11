@@ -6,11 +6,12 @@
             restrict: "A",
             replace: false,
             link: function() {
-                var getHeight, parentDocHeight, sendHeight;
-                parentDocHeight = parent.getDocumentHeight();
-                console.log("Parent height: " + parentDocHeight);
-                getHeight = function() {
-                    return $(document).height();
+                var height, reset, sendHeight;
+                height = $(".list-wrapper").innerHeight();
+                console.log(height);
+                reset = function() {
+                    height = $(".list-wrapper").innerHeight();
+                    return sendHeight(height);
                 };
                 sendHeight = function(height) {
                     var message, messageJSON;
@@ -21,9 +22,9 @@
                     console.log(messageJSON);
                     return window.parent.postMessage(messageJSON, "*");
                 };
-                sendHeight(getHeight());
+                sendHeight(height);
                 return $(window).on("resize", function() {
-                    return sendHeight(getHeight());
+                    return reset();
                 });
             }
         };
