@@ -57,6 +57,14 @@ body {
 .ng-scope {
   height: 100%; }
 
+.full-width {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  overflow-x: hidden; }
+  .full-width img {
+    max-width: 100%; }
+
 .list-wrapper {
   position: relative;
   display: block;
