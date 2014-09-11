@@ -31,10 +31,10 @@
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
+            height = $(".full-width").innerHeight();
             $(".list-wrapper").css({
-                height: "8888px"
+                height: height
             });
-            height = $(".list-wrapper").innerHeight();
             sendHeight = function(height) {
                 var message, messageJSON;
                 message = {
