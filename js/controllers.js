@@ -46,6 +46,7 @@
             };
             sendHeight(height);
             return $(window).on("resize", function() {
+                height = $(document.body).height();
                 return sendHeight(height);
             });
         });
