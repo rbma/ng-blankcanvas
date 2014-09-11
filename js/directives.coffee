@@ -1,5 +1,33 @@
 listDirectives = angular.module('listDirectives', [])
 
+listDirectives.directive('sendHeight', ->
+	return{
+		restrict: 'A'
+		replace: false
+		link: ->
+			height = $('.full-width').innerHeight()
+
+			$('.list-wrapper').css
+				height: height
+
+
+			sendHeight = (height) ->
+				message = {height: height}
+				messageJSON = JSON.stringify(message)
+				console.log messageJSON
+				return window.parent.postMessage(messageJSON, '*')
+
+
+			sendHeight(height)
+
+			$(window).on('resize', ->
+				height = $('.full-width').innerHeight()
+				sendHeight(height)
+			)
+	}
+)
+
+
 listDirectives.directive('sticky', ->
 
 	return{

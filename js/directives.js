@@ -1,6 +1,33 @@
 (function() {
     var listDirectives;
     listDirectives = angular.module("listDirectives", []);
+    listDirectives.directive("sendHeight", function() {
+        return {
+            restrict: "A",
+            replace: false,
+            link: function() {
+                var height, sendHeight;
+                height = $(".full-width").innerHeight();
+                $(".list-wrapper").css({
+                    height: height
+                });
+                sendHeight = function(height) {
+                    var message, messageJSON;
+                    message = {
+                        height: height
+                    };
+                    messageJSON = JSON.stringify(message);
+                    console.log(messageJSON);
+                    return window.parent.postMessage(messageJSON, "*");
+                };
+                sendHeight(height);
+                return $(window).on("resize", function() {
+                    height = $(".full-width").innerHeight();
+                    return sendHeight(height);
+                });
+            }
+        };
+    });
     listDirectives.directive("sticky", function() {
         return {
             restrict: "A",

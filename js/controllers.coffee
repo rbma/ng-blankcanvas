@@ -59,7 +59,7 @@ listControllers.controller('ListDetailCtrl', [
 			sendHeight(height)
 
 			$(window).on('resize', ->
-				height = $(document.body).height()
+				height = $('.full-width').innerHeight()
 				sendHeight(height)
 			)
 		

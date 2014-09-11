@@ -46,7 +46,7 @@
             };
             sendHeight(height);
             return $(window).on("resize", function() {
-                height = $(document.body).height();
+                height = $(".full-width").innerHeight();
                 return sendHeight(height);
             });
         });
