@@ -23,9 +23,9 @@ listDirectives.directive('sendHeight', ->
 
 			sendHeight(height)
 
-			# $(window).on('resize', ->
-			# 	reset()
-			# )
+			$(window).on('resize', ->
+				reset()
+			)
 	}
 )
 

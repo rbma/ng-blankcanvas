@@ -22,7 +22,10 @@
                     console.log(messageJSON);
                     return window.parent.postMessage(messageJSON, "*");
                 };
-                return sendHeight(height);
+                sendHeight(height);
+                return $(window).on("resize", function() {
+                    return reset();
+                });
             }
         };
     });
