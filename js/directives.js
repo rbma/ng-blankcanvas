@@ -8,7 +8,6 @@
             link: function() {
                 var height, reset, sendHeight;
                 height = $(".list-wrapper").innerHeight();
-                console.log($(window.parent).height());
                 reset = function() {
                     height = $(".list-wrapper").innerHeight();
                     return sendHeight(height);
