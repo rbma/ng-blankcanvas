@@ -41,29 +41,7 @@ listControllers.controller('ListDetailCtrl', [
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
 			)
 
-			height = $('.full-width').innerHeight()
-
-			$('.list-wrapper').css
-				height: height
-
-
-
-
-			sendHeight = (height) ->
-				message = {height: height}
-				messageJSON = JSON.stringify(message)
-				console.log messageJSON
-				return window.parent.postMessage(messageJSON, '*')
-
-
-			sendHeight(height)
-
-			$(window).on('resize', ->
-				height = $('.full-width').innerHeight()
-				sendHeight(height)
-			)
-		
-
+			
 		$scope.trust = (body) ->
 			return $sce.trustAsHtml(body)
 
