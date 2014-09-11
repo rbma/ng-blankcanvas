@@ -6,8 +6,11 @@ listDirectives.directive('sendHeight', ->
 		replace: false
 		link: ->
 
-			
+
 			height = $('.list-wrapper').innerHeight()
+
+			if height < 800
+				height = 800
 
 
 			reset = ->
