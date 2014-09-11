@@ -8,9 +8,7 @@
             link: function() {
                 var height, reset, sendHeight;
                 height = $(".list-wrapper").innerHeight();
-                if (height < 800) {
-                    height = 800;
-                }
+                console.log(height);
                 reset = function() {
                     height = $(".list-wrapper").innerHeight();
                     return sendHeight(height);
