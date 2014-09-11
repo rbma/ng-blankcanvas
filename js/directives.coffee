@@ -6,21 +6,22 @@ listDirectives.directive('sendHeight', ->
 		replace: false
 		link: ->
 
-			height = $('.list-wrapper').innerHeight()
+			console.log window.getDocumentHeight()
+			# height = $('.list-wrapper').innerHeight()
 
 
-			reset = ->
-				height = $('.list-wrapper').innerHeight()
-				sendHeight(height)
+			# reset = ->
+			# 	height = $('.list-wrapper').innerHeight()
+			# 	sendHeight(height)
 
-			sendHeight = (height) ->
-				message = {height: height}
-				messageJSON = JSON.stringify(message)
-				console.log messageJSON
-				return window.parent.postMessage(messageJSON, '*')
+			# sendHeight = (height) ->
+			# 	message = {height: height}
+			# 	messageJSON = JSON.stringify(message)
+			# 	console.log messageJSON
+			# 	return window.parent.postMessage(messageJSON, '*')
 
 
-			sendHeight(height)
+			# sendHeight(height)
 
 			# $(window).on('resize', ->
 			# 	reset()

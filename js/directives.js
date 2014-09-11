@@ -6,22 +6,7 @@
             restrict: "A",
             replace: false,
             link: function() {
-                var height, reset, sendHeight;
-                height = $(".list-wrapper").innerHeight();
-                reset = function() {
-                    height = $(".list-wrapper").innerHeight();
-                    return sendHeight(height);
-                };
-                sendHeight = function(height) {
-                    var message, messageJSON;
-                    message = {
-                        height: height
-                    };
-                    messageJSON = JSON.stringify(message);
-                    console.log(messageJSON);
-                    return window.parent.postMessage(messageJSON, "*");
-                };
-                return sendHeight(height);
+                return console.log(window.getDocumentHeight());
             }
         };
     });
