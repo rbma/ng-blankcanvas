@@ -7,10 +7,10 @@
             replace: false,
             link: function() {
                 var height, reset, sendHeight;
-                height = $(".list-wrapper").innerHeight();
+                height = $(".frame").innerHeight();
                 console.log(height);
                 reset = function() {
-                    height = $(".list-wrapper").innerHeight();
+                    height = $(".frame").innerHeight();
                     return sendHeight(height);
                 };
                 sendHeight = function(height) {
