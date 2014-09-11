@@ -41,8 +41,11 @@ listControllers.controller('ListDetailCtrl', [
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
 			)
 
+			$('.list-wrapper').css
+				height: '8888px'
 
 			height = $('.list-wrapper').innerHeight()
+
 
 
 			sendHeight = (height) ->
