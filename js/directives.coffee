@@ -6,7 +6,7 @@ listDirectives.directive('sendHeight', ->
 		replace: false
 		link: ->
 
-			$('.list-wrapper').css
+			$('.frame-wrapper').css
 				height: '8888px'
 
 			height = $('.list-wrapper').innerHeight()
