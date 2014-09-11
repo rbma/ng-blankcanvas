@@ -1,45 +1,44 @@
+.frame-wrapper
+	.list-wrapper(du-scroll-container)
+		.rbma-radio-picks
+		h1(class="author") {{list.fields.author}}
+		//- img(ng-src="{{list.includes.Asset[0].fields.file.url}}")
+
+		ul(class="list-thumbs")
+			li(ng-repeat="entry in list.fields.individualListItems")
+				.thumb-container
+					a(href="#{{entry.fields.anchorLinkTag}}", du-smooth-scroll)
+						.img-container
+							span(class="order") {{entry.fields.order}}
+							img(ng-src="{{entry.fields.image.fields.file.url}}")
+
+		p(class="intro", ng-bind-html="trust(list.entry[0].fields.body)")
 
 
-.list-wrapper(id="top" du-scroll-container)
-	.rbma-radio-picks
-	h1(class="author") {{list.fields.author}}
-	//- img(ng-src="{{list.includes.Asset[0].fields.file.url}}")
+		ul(class="list-items")
+			li(class="list-item", ng-repeat="item in list.fields.individualListItems")
+				a(id="{{item.fields.anchorLinkTag}}")
+				.list-container
+					.list-titles
+						span(flag class="item-order" data-order="{{item.fields.order}}") {{item.fields.order}}
+						h3(class="item-title") {{item.fields.title}}
+					.item-body
+						.item-image-wrapper(ng-show="{{item.fields.embedAsImage}}")
+							img(ng-src="{{item.fields.image.fields.file.url}}")
+						p(ng-bind-html="trust(item.fields.body)")
 
-	ul(class="list-thumbs")
-		li(ng-repeat="entry in list.fields.individualListItems")
-			.thumb-container
-				a(href="#{{entry.fields.anchorLinkTag}}", du-smooth-scroll)
-					.img-container
-						span(class="order") {{entry.fields.order}}
-						img(ng-src="{{entry.fields.image.fields.file.url}}")
-
-	p(class="intro", ng-bind-html="trust(list.entry[0].fields.body)")
-
-
-	ul(class="list-items")
-		li(class="list-item", ng-repeat="item in list.fields.individualListItems")
-			a(id="{{item.fields.anchorLinkTag}}")
-			.list-container
-				.list-titles
-					span(flag class="item-order" data-order="{{item.fields.order}}") {{item.fields.order}}
-					h3(class="item-title") {{item.fields.title}}
-				.item-body
-					.item-image-wrapper(ng-show="{{item.fields.embedAsImage}}")
-						img(ng-src="{{item.fields.image.fields.file.url}}")
-					p(ng-bind-html="trust(item.fields.body)")
-
-	.sidebar(sticky)
-		a(ng-click="smoothScroll('top')")
-			img(ng-src="{{list.fields.authorImage.fields.file.url}}")
-			h4(class="radio-picks-sidebar")
-			h4(class="author-sidebar") {{list.fields.author}}
-			
-		ul(class="sidebar-list")
-			a(ng-repeat="item in list.fields.individualListItems", 
-				class="{{item.fields.anchorLinkTag}}",
-				href="#{{item.fields.anchorLinkTag}}",
-				du-smooth-scroll)
-					
-				li(class="sidebar-item" data-order="{{item.fields.order}}")
-					.order {{item.fields.order}}
-					{{item.fields.title}}
+		.sidebar(sticky)
+			a(ng-click="smoothScroll('top')")
+				img(ng-src="{{list.fields.authorImage.fields.file.url}}")
+				h4(class="radio-picks-sidebar")
+				h4(class="author-sidebar") {{list.fields.author}}
+				
+			ul(class="sidebar-list")
+				a(ng-repeat="item in list.fields.individualListItems", 
+					class="{{item.fields.anchorLinkTag}}",
+					href="#{{item.fields.anchorLinkTag}}",
+					du-smooth-scroll)
+						
+					li(class="sidebar-item" data-order="{{item.fields.order}}")
+						.order {{item.fields.order}}
+						{{item.fields.title}}

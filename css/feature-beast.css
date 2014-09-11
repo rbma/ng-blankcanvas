@@ -57,19 +57,15 @@ body {
 .ng-scope {
   height: 100%; }
 
-.full-width {
-  width: 100%;
-  max-width: 100%;
+.frame-wrapper {
+  position: relative;
   display: block;
-  overflow-x: hidden; }
-  .full-width img {
-    max-width: 100%; }
+  overflow-x: hidden;
+  overflow-y: scroll; }
 
 .list-wrapper {
   position: relative;
   display: block;
-  overflow-x: hidden;
-  overflow-y: scroll;
   margin: 0;
   padding-top: 58px;
   -webkit-transition: opacity 0.3s;
