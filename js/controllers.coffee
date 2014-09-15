@@ -73,6 +73,8 @@ listControllers.controller('ListDetailCtrl', [
 				console.log $scope.list
 				$scope.list.fields.body = converter.makeHtml($scope.list.fields.body)
 			)
+
+
 			addWaypoints()
 
 			setTimeout(removeSpinner, 2000)

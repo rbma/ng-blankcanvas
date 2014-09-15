@@ -14,7 +14,8 @@ div(id="spinner")
 							span(class="order") {{entry.fields.order}}
 							img(ng-src="{{entry.fields.image.fields.file.url}}")
 
-		p(class="intro", ng-bind-html="trust(list.entry[0].fields.body)")
+		img(ng-src="{{list.fields.authorImage.fields.file.url}}", class="author-hero-image")
+		p(class="intro", ng-bind-html="trust(list.fields.body)")
 
 
 		ul(class="list-items")
