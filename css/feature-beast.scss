@@ -417,6 +417,16 @@ body{
 
 @media screen and (max-width: 600px){
 
+	.frame{
+		width: 100%;
+		min-height: 600px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
 	.list-wrapper{
 		width: 90%;
 		margin-left: 5%;
