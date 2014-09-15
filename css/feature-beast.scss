@@ -1,6 +1,4 @@
-// Place all the styles related to the features controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 
 @import '_mixins.scss';
 @import '_fonts.scss';
@@ -58,7 +56,8 @@ body{
 
 .frame{
 	width: 100%;
-	min-height: 900px;
+	// min-height: 900px;
+	height: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	position: fixed;
