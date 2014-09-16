@@ -37,6 +37,23 @@ listDirectives.directive('sticky', ->
 		replace: false
 		link: ->
 
+			mobile = false
+			currentlyMobile = false
+			width = 0
+			prevWidth = 
+
+			reset = ->
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+					mobile = true
+				
+				if $(window).width() <= 1024
+					mobile = true
+				
+				else
+					mobile = false
+
+
+
 			$('.sidebar').waypoint({
 				context: '.frame'
 				handler: (direction) ->
@@ -45,6 +62,10 @@ listDirectives.directive('sticky', ->
 					else
 						$('.sidebar').removeClass "sticky"
 			})
+
+
+		
+
 	}
 
 )

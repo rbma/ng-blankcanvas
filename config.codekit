@@ -5328,6 +5328,28 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/dist\/js\/min\/app.min-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dist\/js\/min\/app.min-min.js",
+		"outputAbbreviatedPath": "\/dist\/js\/min\/min\/app.min-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dist\/min\/app.concat-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dist\/min\/app.concat-min.js",
+		"outputAbbreviatedPath": "\/dist\/min\/min\/app.concat-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/dist\/min\/app.init-min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -14964,15 +14986,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/node_modules\/grunt\/README.md",
 		"outputAbbreviatedPath": "\/node_modules\/grunt\/README.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/partials\/detail.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/partials\/detail.html",
-		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},

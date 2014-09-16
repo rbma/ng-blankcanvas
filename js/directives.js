@@ -34,6 +34,20 @@
             restrict: "A",
             replace: false,
             link: function() {
+                var currentlyMobile, mobile, prevWidth, reset, width;
+                mobile = false;
+                currentlyMobile = false;
+                width = 0;
+                prevWidth = reset = function() {
+                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                        mobile = true;
+                    }
+                    if ($(window).width() <= 1024) {
+                        return mobile = true;
+                    } else {
+                        return mobile = false;
+                    }
+                };
                 return $(".sidebar").waypoint({
                     context: ".frame",
                     handler: function(direction) {
