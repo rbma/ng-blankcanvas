@@ -1,72 +1,57 @@
 listDirectives = angular.module('listDirectives', [])
 
 listDirectives.directive('sendHeight', ->
+
+	link = ($scope, element, attrs) ->
+
+		height = element.parent().innerHeight()
+
+
+		reset = ->
+			height = element.parent().innerHeight()
+			sendHeight(height)
+
+		sendHeight = (height) ->
+			message = {height: height}
+			messageJSON = JSON.stringify(message)
+			console.log messageJSON
+			return window.parent.postMessage(messageJSON, '*')
+
+		sendHeight(height)
+
+		$(window).on('resize', ->
+			reset()
+		)
+
+	
 	return{
 		restrict: 'A'
 		replace: false
-		link: ->
-
-
-			height = $('.frame').innerHeight()
-			console.log height
-
-			reset = ->
-				height = $('.frame').innerHeight()
-				sendHeight(height)
-
-			sendHeight = (height) ->
-				message = {height: height}
-				messageJSON = JSON.stringify(message)
-				console.log messageJSON
-				return window.parent.postMessage(messageJSON, '*')
-
-
-			sendHeight(height)
-
-			$(window).on('resize', ->
-				reset()
-			)
+		link: link
 	}
 )
 
 
 listDirectives.directive('sticky', ->
 
-	return{
-		restrict: 'A'
-		replace: false
-		link: ->
 
-			mobile = false
-			currentlyMobile = false
-			width = 0
-			prevWidth = 
-
-			reset = ->
-				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
-					mobile = true
-				
-				if $(window).width() <= 1024
-					mobile = true
-				
-				else
-					mobile = false
-
-
-
-			$('.sidebar').waypoint({
-				context: '.frame'
-				handler: (direction) ->
-					if direction == 'down'
-						$('.sidebar').addClass "sticky"
-					else
-						$('.sidebar').removeClass "sticky"
-			})
-
-
+	link = ($scope, element, attrs) ->
 		
+		element.waypoint({
+			context: '.frame'
+			handler: (direction) ->
+				if direction == 'down'
+					element.addClass "sticky"
+				else
+					element.removeClass "sticky"
+		})
+
+
+	return{
+		
+		link: link
 
 	}
-
 )
+
 

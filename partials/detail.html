@@ -2,7 +2,9 @@
 <div id="spinner"></div>
 <div du-scroll-container="du-scroll-container" class="frame">
   <div id="top" send-height="send-height" class="list-wrapper">
-    <div class="rbma-radio-picks"></div>
+    <div class="rbma-radio-picks">
+      <h1 class="title">{{list.fields.parentTitle}}</h1>
+    </div>
     <h1 class="author">{{list.fields.author}}</h1>
     <ul class="list-thumbs">
       <li ng-repeat="entry in list.fields.individualListItems">

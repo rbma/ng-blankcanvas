@@ -92,8 +92,9 @@ body {
     border-bottom: 5px solid blue;
     width: 100%;
     margin-left: 10%; }
-    .list-wrapper .rbma-radio-picks:after {
-      content: 'RBMA Radio Picks'; }
+    .list-wrapper .rbma-radio-picks .title {
+      margin: 0;
+      padding: 0; }
   .list-wrapper .author {
     font-size: 4em;
     margin: 0;
@@ -102,7 +103,7 @@ body {
     list-style-type: none;
     padding: none;
     padding-right: 100px;
-    margin-left: 15%;
+    margin-left: 20%;
     text-align: center;
     z-index: 1;
     margin-top: 68px; }
@@ -228,7 +229,7 @@ body {
 
 .sidebar {
   position: absolute;
-  top: 250px;
+  top: 280px;
   left: 10px;
   width: 17.0000003333%;
   text-align: left; }
@@ -238,7 +239,7 @@ body {
   .sidebar h4 {
     margin: 0; }
   .sidebar img {
-    max-width: 50%;
+    max-width: 80%;
     height: auto;
     margin-left: 0;
     margin-left: 20px; }
@@ -259,13 +260,15 @@ body {
       .sidebar .sidebar-list a .sidebar-item {
         padding: 5px;
         margin: 0;
+        font-size: 0.8em;
         background-color: transparent;
-        color: blue !important; }
+        color: blue !important;
+        width: 80%; }
         .sidebar .sidebar-list a .sidebar-item .order {
           width: 15px;
           display: inline-block;
           margin-right: 5px;
-          font-size: 0.75em;
+          font-size: 0.7em;
           text-align: center;
           line-height: 15px;
           height: 15px;
