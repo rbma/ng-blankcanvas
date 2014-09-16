@@ -1,0 +1,8 @@
+
+<ul class="lists">
+  <li ng-model="lists" ng-repeat="list in lists"><a href="#/lists/{{list.sys.id}}">
+      <div class="list-list-wrapper">
+        <div class="list-list-image-wrapper"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/></div>
+        <h3>{{list.fields.title}}</h3>
+      </div></a></li>
+</ul>
