@@ -27,7 +27,7 @@
       </li>
     </ul>
     <div sticky="sticky" class="sidebar"><a href="#top" du-smooth-scroll="du-smooth-scroll" class="topscroll"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
-        <h4 class="radio-picks-sidebar"></h4>
+        <h4 class="radio-picks-sidebar">{{list.fields.parentTitle}}</h4>
         <h4 class="author-sidebar">{{list.fields.author}}</h4></a>
       <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" class="{{item.fields.anchorLinkTag}}">
           <li data-order="{{item.fields.order}}" class="sidebar-item">

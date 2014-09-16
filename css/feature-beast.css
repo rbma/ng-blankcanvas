@@ -246,7 +246,7 @@ body {
   .sidebar .radio-picks-sidebar {
     margin-left: 20px; }
     .sidebar .radio-picks-sidebar:after {
-      content: "RBMA Radio Picks"; }
+      content: ""; }
   .sidebar .author-sidebar {
     margin-left: 20px; }
   .sidebar .sidebar-list {

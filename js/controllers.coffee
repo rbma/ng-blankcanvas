@@ -46,6 +46,7 @@ listControllers.controller('ListDetailCtrl', [
 				$('#spinner').remove()
 
 
+		#TODO: fix waypoints offset when scrolling up
 		addWaypoints = ->
 			$('a.item-order-link').waypoint({
 					context: '.frame'
