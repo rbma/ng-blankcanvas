@@ -20,7 +20,7 @@ body{
 	height: 100%;
 	min-width: 320px;
 	min-height: 100%;
-	color: blue;
+	color: black;
 	-webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-overflow-scrolling: touch;
@@ -91,7 +91,7 @@ body{
 	@include vendorize(transition, opacity 0.3s);
 	.rbma-radio-picks{
 		font-size: 2em;
-		border-bottom: 5px solid blue;
+		border-bottom: 5px solid black;
 		width: 100%;
 		margin-left: 10%;
 		.title{
@@ -127,7 +127,7 @@ body{
 				z-index: 1;
 
 				.img-container{
-					border: 5px solid blue;
+					border: 5px solid black;
 					overflow: hidden !important;
 					width: 150px;
 					height: 150px;
@@ -146,11 +146,11 @@ body{
 						right: 10px;
 						font-size: 0.75em;
 						font-weight: bold;
-						border: 2px solid blue;
+						border: 2px solid black;
 						width: 15px;
 						height: 15px;
 						line-height: 15px;
-						color: blue !important;
+						color: black !important;
 					}
 					img{
 						height: 100%;
@@ -197,7 +197,7 @@ body{
 				height: auto;
 				width: 100%;
 				.list-titles{
-					border-bottom: 5px solid blue;
+					border-bottom: 5px solid black;
 					margin: 0;
 					.item-order{
 						font-size: 0.5em;
@@ -206,7 +206,7 @@ body{
 						width: 20px;
 						line-height: 20px;
 						height: 20px;
-						border: 2px solid blue;
+						border: 2px solid black;
 						@include vendorize(border-radius, 50%);
 					}
 					.item-title{
@@ -262,7 +262,7 @@ body{
 		text-align: left;
 		a.topscroll{
 			text-decoration: none;
-			color: blue;
+			color: black;
 		}
 		h4{
 			margin: 0;
@@ -295,7 +295,7 @@ body{
 					margin: 0;
 					font-size: 0.8em;
 					background-color: transparent;
-					color: blue !important;
+					color: black !important;
 					width: 80%;
 					.order{
 						width: 15px;
@@ -305,11 +305,11 @@ body{
 						text-align: center;
 						line-height: 15px;
 						height: 15px;
-						border: 2px solid blue;
+						border: 2px solid black;
 						@include vendorize(border-radius, 50%);
 					}
 					&:hover, &.active{
-						background-color: blue;
+						background-color: black;
 						color: white !important;
 						.order{
 							border: 2px solid white !important; 
@@ -331,7 +331,7 @@ body{
 			margin-left: 20px;
 			.button{
 				-webkit-font-smoothing: antialiased;
-				background-color: blue;
+				background-color: black;
 				border-radius: 0;
 				width: 35px;
 				height: 35px;
