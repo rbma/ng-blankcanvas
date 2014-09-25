@@ -7719,7 +7719,7 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
 (function() {
     "use strict";
     var app;
-    app = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress" ]);
+    app = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress", "listServices" ]);
     app.config([ "$routeProvider", function($routeProvider) {
         return $routeProvider.when("/lists", {
             templateUrl: "partials/list.html",
@@ -7753,38 +7753,10 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
             });
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", function($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress) {
-        var addWaypoints, converter, removeSpinner;
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", function($scope, $routeParams, $http, $location, $sce, listService) {
+        var converter;
         converter = new Showdown.converter();
-        ngProgress.height("10px");
-        ngProgress.color("#ffffff");
-        ngProgress.start();
-        removeSpinner = function() {
-            ngProgress.complete();
-            return $("#spinner").animate({
-                opacity: 0
-            }, 600, function() {
-                return $("#spinner").remove();
-            });
-        };
-        addWaypoints = function() {
-            return $("a.item-order-link").waypoint({
-                context: ".frame",
-                offset: 20,
-                handler: function(direction) {
-                    var order;
-                    if (direction === "down") {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    } else {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    }
-                }
-            });
-        };
+        listService.progressInit();
         client.entries({
             "sys.id": $routeParams.listId,
             include: 10
@@ -7794,69 +7766,93 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
-            addWaypoints();
-            return setTimeout(removeSpinner, 2e3);
+            return setTimeout(listService.removeSpinner, 2e3);
         });
-        $scope.trust = function(body) {
+        return $scope.trust = function(body) {
             return $sce.trustAsHtml(body);
-        };
-        return $scope.gotoBottom = function(order) {
-            var old;
-            old = $location.hash();
-            $location.hash(order);
-            $anchorScroll();
-            return $location.hash(old);
         };
     } ]);
 }).call(this);
 
 (function() {
+    "use strict";
     var listDirectives;
     listDirectives = angular.module("listDirectives", []);
     listDirectives.directive("sendHeight", function() {
+        var link;
+        link = function($scope, element, attrs) {
+            var height, reset, sendHeight;
+            height = element.parent().innerHeight();
+            reset = function() {
+                height = element.parent().innerHeight();
+                return sendHeight(height);
+            };
+            sendHeight = function(height) {
+                var message, messageJSON;
+                message = {
+                    height: height
+                };
+                messageJSON = JSON.stringify(message);
+                console.log(messageJSON);
+                return window.parent.postMessage(messageJSON, "*");
+            };
+            sendHeight(height);
+            return $(window).on("resize", function() {
+                return reset();
+            });
+        };
         return {
             restrict: "A",
             replace: false,
-            link: function() {
-                var height, reset, sendHeight;
-                height = $(".frame").innerHeight();
-                console.log(height);
-                reset = function() {
-                    height = $(".frame").innerHeight();
-                    return sendHeight(height);
-                };
-                sendHeight = function(height) {
-                    var message, messageJSON;
-                    message = {
-                        height: height
-                    };
-                    messageJSON = JSON.stringify(message);
-                    console.log(messageJSON);
-                    return window.parent.postMessage(messageJSON, "*");
-                };
-                sendHeight(height);
-                return $(window).on("resize", function() {
-                    return reset();
-                });
-            }
+            link: link
         };
     });
     listDirectives.directive("sticky", function() {
-        return {
-            restrict: "A",
-            replace: false,
-            link: function() {
-                return $(".sidebar").waypoint({
-                    context: ".frame",
-                    handler: function(direction) {
-                        if (direction === "down") {
-                            return $(".sidebar").addClass("sticky");
-                        } else {
-                            return $(".sidebar").removeClass("sticky");
-                        }
+        var link;
+        link = function($scope, element, attrs) {
+            return element.waypoint({
+                context: ".frame",
+                handler: function(direction) {
+                    if (direction === "down") {
+                        return element.addClass("sticky");
+                    } else {
+                        return element.removeClass("sticky");
                     }
-                });
-            }
+                }
+            });
+        };
+        return {
+            link: link
         };
     });
+}).call(this);
+
+(function() {
+    "use strict";
+    var listServices;
+    listServices = angular.module("listServices", []);
+    listServices.factory("listService", [ "ngProgress", function(ngProgress) {
+        var progressInit, removeSpinner;
+        progressInit = function() {
+            ngProgress.height("10px");
+            ngProgress.color("#ffffff");
+            return ngProgress.start();
+        };
+        removeSpinner = function() {
+            ngProgress.complete();
+            return $("#spinner").animate({
+                opacity: 0
+            }, 600, function() {
+                return $("#spinner").remove();
+            });
+        };
+        return {
+            progressInit: function() {
+                return progressInit();
+            },
+            removeSpinner: function() {
+                return removeSpinner();
+            }
+        };
+    } ]);
 }).call(this);

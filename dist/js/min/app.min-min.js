@@ -6393,7 +6393,7 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
 }.call(this), function() {
     "use strict";
     var a;
-    a = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress" ]), 
+    a = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress", "listServices" ]), 
     a.config([ "$routeProvider", function(a) {
         return a.when("/lists", {
             templateUrl: "partials/list.html",
@@ -6420,72 +6420,74 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
                 return b.lists = a, console.log(b.lists);
             });
         });
-    } ]), b.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", function(b, c, d, e, f, g, h) {
-        var i, j, k;
-        return j = new Showdown.converter(), h.height("10px"), h.color("#ffffff"), h.start(), 
-        k = function() {
-            return h.complete(), $("#spinner").animate({
-                opacity: 0
-            }, 600, function() {
-                return $("#spinner").remove();
-            });
-        }, i = function() {
-            return $("a.item-order-link").waypoint({
-                context: ".frame",
-                offset: 20,
-                handler: function(a) {
-                    var b;
-                    return "down" === a ? (b = $(this).data("order"), $(".sidebar-item").removeClass("active"), 
-                    $(".sidebar-item[data-order=" + b + "]").addClass("active")) : (b = $(this).data("order"), 
-                    $(".sidebar-item").removeClass("active"), $(".sidebar-item[data-order=" + b + "]").addClass("active"));
-                }
-            });
-        }, a.entries({
+    } ]), b.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", function(b, c, d, e, f, g) {
+        var h;
+        return h = new Showdown.converter(), g.progressInit(), a.entries({
             "sys.id": c.listId,
             include: 10
         }).done(function(a) {
             return b.$apply(function() {
-                return b.list = a[0], console.log(b.list), b.list.fields.body = j.makeHtml(b.list.fields.body);
-            }), i(), setTimeout(k, 2e3);
+                return b.list = a[0], console.log(b.list), b.list.fields.body = h.makeHtml(b.list.fields.body);
+            }), setTimeout(g.removeSpinner, 2e3);
         }), b.trust = function(a) {
-            return g.trustAsHtml(a);
-        }, b.gotoBottom = function(a) {
-            var b;
-            return b = e.hash(), e.hash(a), f(), e.hash(b);
+            return f.trustAsHtml(a);
         };
     } ]);
 }.call(this), function() {
+    "use strict";
     var a;
     a = angular.module("listDirectives", []), a.directive("sendHeight", function() {
-        return {
+        var a;
+        return a = function(a, b) {
+            var c, d, e;
+            return c = b.parent().innerHeight(), d = function() {
+                return c = b.parent().innerHeight(), e(c);
+            }, e = function(a) {
+                var b, c;
+                return b = {
+                    height: a
+                }, c = JSON.stringify(b), console.log(c), window.parent.postMessage(c, "*");
+            }, e(c), $(window).on("resize", function() {
+                return d();
+            });
+        }, {
             restrict: "A",
             replace: !1,
-            link: function() {
-                var a, b, c;
-                return a = $(".frame").innerHeight(), console.log(a), b = function() {
-                    return a = $(".frame").innerHeight(), c(a);
-                }, c = function(a) {
-                    var b, c;
-                    return b = {
-                        height: a
-                    }, c = JSON.stringify(b), console.log(c), window.parent.postMessage(c, "*");
-                }, c(a), $(window).on("resize", function() {
-                    return b();
-                });
-            }
+            link: a
         };
     }), a.directive("sticky", function() {
-        return {
-            restrict: "A",
-            replace: !1,
-            link: function() {
-                return $(".sidebar").waypoint({
-                    context: ".frame",
-                    handler: function(a) {
-                        return "down" === a ? $(".sidebar").addClass("sticky") : $(".sidebar").removeClass("sticky");
-                    }
-                });
-            }
+        var a;
+        return a = function(a, b) {
+            return b.waypoint({
+                context: ".frame",
+                handler: function(a) {
+                    return "down" === a ? b.addClass("sticky") : b.removeClass("sticky");
+                }
+            });
+        }, {
+            link: a
         };
     });
+}.call(this), function() {
+    "use strict";
+    var a;
+    a = angular.module("listServices", []), a.factory("listService", [ "ngProgress", function(a) {
+        var b, c;
+        return b = function() {
+            return a.height("10px"), a.color("#ffffff"), a.start();
+        }, c = function() {
+            return a.complete(), $("#spinner").animate({
+                opacity: 0
+            }, 600, function() {
+                return $("#spinner").remove();
+            });
+        }, {
+            progressInit: function() {
+                return b();
+            },
+            removeSpinner: function() {
+                return c();
+            }
+        };
+    } ]);
 }.call(this);

@@ -7,8 +7,7 @@ div(id="spinner")
 		
 
 		.rbma-radio-picks
-		
-
+			h1(class="title") {{list.fields.parentTitle}}
 		h1(class="author") {{list.fields.author}}
 
 		ul(class="list-thumbs")
@@ -40,11 +39,9 @@ div(id="spinner")
 			
 			li(class="list-item", ng-repeat="item in list.fields.individualListItems")
 				
-				.list-container
+				.list-container(id="{{item.fields.anchorLinkTag}}")
 					
 					.list-titles
-						
-						a(id="{{item.fields.anchorLinkTag}}" class="item-order-link" data-order="{{item.fields.order}}")
 						
 						span(class="item-order") {{item.fields.order}}
 						
@@ -64,13 +61,12 @@ div(id="spinner")
 
 		.sidebar(sticky)
 			
-			a(ng-click="smoothScroll('top')")
+			a(href="#top", du-smooth-scroll, class="topscroll")
 				
 				img(ng-src="{{list.fields.authorImage.fields.file.url}}")
 				
-				h4(class="radio-picks-sidebar")
+				h4(class="radio-picks-sidebar") {{list.fields.parentTitle}}
 				
-				h4(class="author-sidebar") {{list.fields.author}}
 				
 			
 
@@ -79,7 +75,7 @@ div(id="spinner")
 				a(ng-repeat="item in list.fields.individualListItems", 
 					class="{{item.fields.anchorLinkTag}}",
 					href="#{{item.fields.anchorLinkTag}}",
-					du-smooth-scroll)
+					du-smooth-scroll du-scrollspy)
 						
 					
 					li(class="sidebar-item" data-order="{{item.fields.order}}")
@@ -90,12 +86,12 @@ div(id="spinner")
 				
 				.button
 					
-					a(href="https://twitter.com/share?url={{feature.fields.rbmaUrl}}&via=rbma&text={{feature.fields.title}}", target="blank")
+					a(href="https://twitter.com/share?url={{feature.fields.rbmaUrl}}&via=rbma&text={{list.fields.title}}", target="blank")
 						
 						i(class="fa fa-twitter")
 				
 				.button
 					
-					a(href="https://www.facebook.com/sharer/sharer.php?u={{feature.fields.rbma_url}}", target="blank")
+					a(href="https://www.facebook.com/sharer/sharer.php?u={{list.fields.rbma_url}}", target="blank")
 						
 						i(class="fa fa-facebook")
