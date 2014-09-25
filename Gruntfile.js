@@ -26,7 +26,7 @@ module.exports = function(grunt){
 					'bower_components/angular-mocks/angular-mocks.js',
 					'bower_components/angular-scroll/angular-scroll.min.js',
 					'bower_components/showdown/src/showdown.js',
-					'js/waypoints.min.js',
+					'bower_components/jquery-waypoints/waypoints.min.js',
 					'js/bower_components/ngprogress/build/ngProgress.min.js',
 					'bower_components/imagesloaded/imagesloaded.pkgd.min.js',
 					'bower_components/FitText.js/jquery.fittext.js',

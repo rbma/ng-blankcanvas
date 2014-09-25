@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                 options: {
                     separator: ";"
                 },
-                src: [ "bower_components/angular-route/angular-route.min.js", "bower_components/angular-ui-utils/ui-utils.min.js", "bower_components/contentful/dist/contentful.js", "bower_components/angular-mocks/angular-mocks.js", "bower_components/angular-scroll/angular-scroll.min.js", "bower_components/showdown/src/showdown.js", "js/waypoints.min.js", "js/bower_components/ngprogress/build/ngProgress.min.js", "bower_components/imagesloaded/imagesloaded.pkgd.min.js", "bower_components/FitText.js/jquery.fittext.js", "js/app.js", "js/controllers.js", "js/directives.js", "js/services.js" ],
+                src: [ "bower_components/angular-route/angular-route.min.js", "bower_components/angular-ui-utils/ui-utils.min.js", "bower_components/contentful/dist/contentful.js", "bower_components/angular-mocks/angular-mocks.js", "bower_components/angular-scroll/angular-scroll.min.js", "bower_components/showdown/src/showdown.js", "bower_components/jquery-waypoints/waypoints.min.js", "js/bower_components/ngprogress/build/ngProgress.min.js", "bower_components/imagesloaded/imagesloaded.pkgd.min.js", "bower_components/FitText.js/jquery.fittext.js", "js/app.js", "js/controllers.js", "js/directives.js", "js/services.js" ],
                 dest: "dist/app.concat.js"
             },
             css: {

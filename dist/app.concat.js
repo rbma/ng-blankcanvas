@@ -5970,17 +5970,10 @@ if(window.jasmine || window.mocha) {
 
 })(window, window.angular);
 ;var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:1-Math.pow(2*(1-e),2)/2};angular.module("duScroll",["duScroll.scrollspy","duScroll.smoothScroll","duScroll.scrollContainer","duScroll.spyContext","duScroll.scrollHelpers"]).value("duScrollDuration",350).value("duScrollSpyWait",100).value("duScrollGreedy",!1).value("duScrollEasing",duScrollDefaultEasing),angular.module("duScroll.scrollHelpers",["duScroll.requestAnimation"]).run(["$window","$q","cancelAnimation","requestAnimation","duScrollEasing",function(e,t,n,r,o){"use strict";var l=angular.element.prototype,i=function(e){return"undefined"!=typeof HTMLDocument&&e instanceof HTMLDocument||e.nodeType&&e.nodeType===e.DOCUMENT_NODE},u=function(e){return"undefined"!=typeof HTMLElement&&e instanceof HTMLElement||e.nodeType&&e.nodeType===e.ELEMENT_NODE},c=function(e){return u(e)||i(e)?e:e[0]};l.scrollTo=function(t,n,r){var o;if(angular.isElement(t)?o=this.scrollToElement:r&&(o=this.scrollToAnimated),o)return o.apply(this,arguments);var l=c(this);return i(l)?e.scrollTo(t,n):(l.scrollLeft=t,void(l.scrollTop=n))};var a,s;l.scrollToAnimated=function(e,l,i,u){i&&!u&&(u=o);var c=this.scrollLeft(),d=this.scrollTop(),f=Math.round(e-c),p=Math.round(l-d),m=null,g=this,v="scroll mousedown mousewheel touchmove keydown",y=function(e){(!e||e.which>0)&&(g.unbind(v,y),n(a),s.reject(),a=null)};if(a&&y(),s=t.defer(),!f&&!p)return s.resolve(),s.promise;var h=function(e){null===m&&(m=e);var t=e-m,n=t>=i?1:u(t/i);g.scrollTo(c+Math.ceil(f*n),d+Math.ceil(p*n)),1>n?a=r(h):(g.unbind(v,y),a=null,s.resolve())};return g.scrollTo(c,d),g.bind(v,y),a=r(h),s.promise},l.scrollToElement=function(e,t,n,r){var o=c(this),l=this.scrollTop()+c(e).getBoundingClientRect().top-(t||0);return u(o)&&(l-=o.getBoundingClientRect().top),this.scrollTo(0,l,n,r)};var d={scrollLeft:function(t,n,r){if(angular.isNumber(t))return this.scrollTo(t,this.scrollTop(),n,r);var o=c(this);return i(o)?e.scrollX||document.documentElement.scrollLeft||document.body.scrollLeft:o.scrollLeft},scrollTop:function(t,n,r){if(angular.isNumber(t))return this.scrollTo(this.scrollTop(),t,n,r);var o=c(this);return i(o)?e.scrollY||document.documentElement.scrollTop||document.body.scrollTop:o.scrollTop}},f=function(e,t){return function(n,r){return r?t.apply(this,arguments):e.apply(this,arguments)}};for(var p in d)l[p]=l[p]?f(l[p],d[p]):d[p]}]),angular.module("duScroll.polyfill",[]).factory("polyfill",["$window",function(e){"use strict";var t=["webkit","moz","o","ms"];return function(n,r){if(e[n])return e[n];for(var o,l=n.substr(0,1).toUpperCase()+n.substr(1),i=0;i<t.length;i++)if(o=t[i]+l,e[o])return e[o];return r}}]),angular.module("duScroll.requestAnimation",["duScroll.polyfill"]).factory("requestAnimation",["polyfill","$timeout",function(e,t){"use strict";var n=0,r=function(e){var r=(new Date).getTime(),o=Math.max(0,16-(r-n)),l=t(function(){e(r+o)},o);return n=r+o,l};return e("requestAnimationFrame",r)}]).factory("cancelAnimation",["polyfill","$timeout",function(e,t){"use strict";var n=function(e){t.cancel(e)};return e("cancelAnimationFrame",n)}]),angular.module("duScroll.spyAPI",["duScroll.scrollContainerAPI"]).factory("spyAPI",["$rootScope","$timeout","scrollContainerAPI","duScrollGreedy","duScrollSpyWait",function(e,t,n,r,o){"use strict";var l=function(n){var l=!1,i=!1,u=function(){i=!1;var t=n.container,o=t[0],l=0;("undefined"!=typeof HTMLElement&&o instanceof HTMLElement||o.nodeType&&o.nodeType===o.ELEMENT_NODE)&&(l=o.getBoundingClientRect().top);var u,c,a,s,d,f;for(s=n.spies,c=n.currentlyActive,a=void 0,u=0;u<s.length;u++)d=s[u],f=d.getTargetPosition(),f&&f.top+d.offset-l<20&&-1*f.top+l<f.height&&(!a||a.top<f.top)&&(a={top:f.top,spy:d});a&&(a=a.spy),c===a||r&&!a||(c&&(c.$element.removeClass("active"),e.$broadcast("duScrollspy:becameInactive",c.$element)),a&&(a.$element.addClass("active"),e.$broadcast("duScrollspy:becameActive",a.$element)),n.currentlyActive=a)};return o?function(){l?i=!0:(u(),l=t(function(){l=!1,i&&u()},o))}:u},i={},u=function(e){var t=e.$id,n={spies:[]};return n.handler=l(n),i[t]=n,e.$on("$destroy",function(){c(e)}),t},c=function(e){var t=e.$id,n=i[t],r=n.container;r&&r.off("scroll",n.handler),delete i[t]},a=u(e),s=function(e){return i[e.$id]?i[e.$id]:e.$parent?s(e.$parent):i[a]},d=function(e){var t,n,r=e.$element.scope();if(r)return s(r);for(n in i)if(t=i[n],-1!==t.spies.indexOf(e))return t},f=function(e){for(;e.parentNode;)if(e=e.parentNode,e===document)return!0;return!1},p=function(e){var t=d(e);d(e).spies.push(e),t.container&&f(t.container)||(t.container&&t.container.off("scroll",t.handler),t.container=n.getContainer(e.$element.scope()),t.container.on("scroll",t.handler).triggerHandler("scroll"))},m=function(e){var t=d(e);e===t.currentlyActive&&(t.currentlyActive=null);var n=t.spies.indexOf(e);-1!==n&&t.spies.splice(n,1)};return{addSpy:p,removeSpy:m,createContext:u,destroyContext:c,getContextForScope:s}}]),angular.module("duScroll.scrollContainerAPI",[]).factory("scrollContainerAPI",["$document",function(e){"use strict";var t={},n=function(e,n){var r=e.$id;return t[r]=n,r},r=function(e){return t[e.$id]?e.$id:e.$parent?r(e.$parent):void 0},o=function(n){var o=r(n);return o?t[o]:e},l=function(e){var n=r(e);n&&delete t[n]};return{getContainerId:r,getContainer:o,setContainer:n,removeContainer:l}}]),angular.module("duScroll.smoothScroll",["duScroll.scrollHelpers","duScroll.scrollContainerAPI"]).directive("duSmoothScroll",["duScrollDuration","scrollContainerAPI",function(e,t){"use strict";return{link:function(n,r,o){r.on("click",function(r){if(o.href&&-1!==o.href.indexOf("#")){var l=document.getElementById(o.href.replace(/.*(?=#[^\s]+$)/,"").substring(1));if(l&&l.getBoundingClientRect){r.stopPropagation&&r.stopPropagation(),r.preventDefault&&r.preventDefault();var i=o.offset?parseInt(o.offset,10):0,u=o.duration?parseInt(o.duration,10):e,c=t.getContainer(n);c.scrollToElement(angular.element(l),isNaN(i)?0:i,isNaN(u)?0:u)}}})}}}]),angular.module("duScroll.spyContext",["duScroll.spyAPI"]).directive("duSpyContext",["spyAPI",function(e){"use strict";return{restrict:"A",scope:!0,compile:function(){return{pre:function(t){e.createContext(t)}}}}}]),angular.module("duScroll.scrollContainer",["duScroll.scrollContainerAPI"]).directive("duScrollContainer",["scrollContainerAPI",function(e){"use strict";return{restrict:"A",scope:!0,compile:function(){return{pre:function(t,n,r){r.$observe("duScrollContainer",function(r){angular.isString(r)&&(r=document.getElementById(r)),r=angular.isElement(r)?angular.element(r):n,e.setContainer(t,r),t.$on("$destroy",function(){e.removeContainer(t)})})}}}}}]),angular.module("duScroll.scrollspy",["duScroll.spyAPI"]).directive("duScrollspy",["spyAPI","$timeout","$rootScope",function(e,t,n){"use strict";var r=function(e,t,n){angular.isElement(e)?this.target=e:angular.isString(e)&&(this.targetId=e),this.$element=t,this.offset=n};return r.prototype.getTargetElement=function(){return!this.target&&this.targetId&&(this.target=document.getElementById(this.targetId)),this.target},r.prototype.getTargetPosition=function(){var e=this.getTargetElement();return e?e.getBoundingClientRect():void 0},r.prototype.flushTargetCache=function(){this.targetId&&(this.target=void 0)},{link:function(o,l,i){var u,c=i.ngHref||i.href;c&&-1!==c.indexOf("#")?u=c.replace(/.*(?=#[^\s]+$)/,"").substring(1):i.duScrollspy&&(u=i.duScrollspy),u&&t(function(){var t=new r(u,l,-(i.offset?parseInt(i.offset,10):0));e.addSpy(t),o.$on("$destroy",function(){e.removeSpy(t)}),o.$on("$locationChangeSuccess",t.flushTargetCache.bind(t)),n.$on("$stateChangeSuccess",t.flushTargetCache.bind(t))},0)}}}]);
-//# sourceMappingURL=angular-scroll.min.js.map;// Generated by CoffeeScript 1.6.2
-/*!
-jQuery Waypoints - v2.0.5
-Copyright (c) 2011-2014 Caleb Troughton
-Licensed under the MIT license.
-https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
-*/
-(function(){var t=[].indexOf||function(t){for(var e=0,n=this.length;e<n;e++){if(e in this&&this[e]===t)return e}return-1},e=[].slice;(function(t,e){if(typeof define==="function"&&define.amd){return define("waypoints",["jquery"],function(n){return e(n,t)})}else{return e(t.jQuery,t)}})(window,function(n,r){var i,o,l,s,f,u,c,a,h,d,p,y,v,w,g,m;i=n(r);a=t.call(r,"ontouchstart")>=0;s={horizontal:{},vertical:{}};f=1;c={};u="waypoints-context-id";p="resize.waypoints";y="scroll.waypoints";v=1;w="waypoints-waypoint-ids";g="waypoint";m="waypoints";o=function(){function t(t){var e=this;this.$element=t;this.element=t[0];this.didResize=false;this.didScroll=false;this.id="context"+f++;this.oldScroll={x:t.scrollLeft(),y:t.scrollTop()};this.waypoints={horizontal:{},vertical:{}};this.element[u]=this.id;c[this.id]=this;t.bind(y,function(){var t;if(!(e.didScroll||a)){e.didScroll=true;t=function(){e.doScroll();return e.didScroll=false};return r.setTimeout(t,n[m].settings.scrollThrottle)}});t.bind(p,function(){var t;if(!e.didResize){e.didResize=true;t=function(){n[m]("refresh");return e.didResize=false};return r.setTimeout(t,n[m].settings.resizeThrottle)}})}t.prototype.doScroll=function(){var t,e=this;t={horizontal:{newScroll:this.$element.scrollLeft(),oldScroll:this.oldScroll.x,forward:"right",backward:"left"},vertical:{newScroll:this.$element.scrollTop(),oldScroll:this.oldScroll.y,forward:"down",backward:"up"}};if(a&&(!t.vertical.oldScroll||!t.vertical.newScroll)){n[m]("refresh")}n.each(t,function(t,r){var i,o,l;l=[];o=r.newScroll>r.oldScroll;i=o?r.forward:r.backward;n.each(e.waypoints[t],function(t,e){var n,i;if(r.oldScroll<(n=e.offset)&&n<=r.newScroll){return l.push(e)}else if(r.newScroll<(i=e.offset)&&i<=r.oldScroll){return l.push(e)}});l.sort(function(t,e){return t.offset-e.offset});if(!o){l.reverse()}return n.each(l,function(t,e){if(e.options.continuous||t===l.length-1){return e.trigger([i])}})});return this.oldScroll={x:t.horizontal.newScroll,y:t.vertical.newScroll}};t.prototype.refresh=function(){var t,e,r,i=this;r=n.isWindow(this.element);e=this.$element.offset();this.doScroll();t={horizontal:{contextOffset:r?0:e.left,contextScroll:r?0:this.oldScroll.x,contextDimension:this.$element.width(),oldScroll:this.oldScroll.x,forward:"right",backward:"left",offsetProp:"left"},vertical:{contextOffset:r?0:e.top,contextScroll:r?0:this.oldScroll.y,contextDimension:r?n[m]("viewportHeight"):this.$element.height(),oldScroll:this.oldScroll.y,forward:"down",backward:"up",offsetProp:"top"}};return n.each(t,function(t,e){return n.each(i.waypoints[t],function(t,r){var i,o,l,s,f;i=r.options.offset;l=r.offset;o=n.isWindow(r.element)?0:r.$element.offset()[e.offsetProp];if(n.isFunction(i)){i=i.apply(r.element)}else if(typeof i==="string"){i=parseFloat(i);if(r.options.offset.indexOf("%")>-1){i=Math.ceil(e.contextDimension*i/100)}}r.offset=o-e.contextOffset+e.contextScroll-i;if(r.options.onlyOnScroll&&l!=null||!r.enabled){return}if(l!==null&&l<(s=e.oldScroll)&&s<=r.offset){return r.trigger([e.backward])}else if(l!==null&&l>(f=e.oldScroll)&&f>=r.offset){return r.trigger([e.forward])}else if(l===null&&e.oldScroll>=r.offset){return r.trigger([e.forward])}})})};t.prototype.checkEmpty=function(){if(n.isEmptyObject(this.waypoints.horizontal)&&n.isEmptyObject(this.waypoints.vertical)){this.$element.unbind([p,y].join(" "));return delete c[this.id]}};return t}();l=function(){function t(t,e,r){var i,o;if(r.offset==="bottom-in-view"){r.offset=function(){var t;t=n[m]("viewportHeight");if(!n.isWindow(e.element)){t=e.$element.height()}return t-n(this).outerHeight()}}this.$element=t;this.element=t[0];this.axis=r.horizontal?"horizontal":"vertical";this.callback=r.handler;this.context=e;this.enabled=r.enabled;this.id="waypoints"+v++;this.offset=null;this.options=r;e.waypoints[this.axis][this.id]=this;s[this.axis][this.id]=this;i=(o=this.element[w])!=null?o:[];i.push(this.id);this.element[w]=i}t.prototype.trigger=function(t){if(!this.enabled){return}if(this.callback!=null){this.callback.apply(this.element,t)}if(this.options.triggerOnce){return this.destroy()}};t.prototype.disable=function(){return this.enabled=false};t.prototype.enable=function(){this.context.refresh();return this.enabled=true};t.prototype.destroy=function(){delete s[this.axis][this.id];delete this.context.waypoints[this.axis][this.id];return this.context.checkEmpty()};t.getWaypointsByElement=function(t){var e,r;r=t[w];if(!r){return[]}e=n.extend({},s.horizontal,s.vertical);return n.map(r,function(t){return e[t]})};return t}();d={init:function(t,e){var r;e=n.extend({},n.fn[g].defaults,e);if((r=e.handler)==null){e.handler=t}this.each(function(){var t,r,i,s;t=n(this);i=(s=e.context)!=null?s:n.fn[g].defaults.context;if(!n.isWindow(i)){i=t.closest(i)}i=n(i);r=c[i[0][u]];if(!r){r=new o(i)}return new l(t,r,e)});n[m]("refresh");return this},disable:function(){return d._invoke.call(this,"disable")},enable:function(){return d._invoke.call(this,"enable")},destroy:function(){return d._invoke.call(this,"destroy")},prev:function(t,e){return d._traverse.call(this,t,e,function(t,e,n){if(e>0){return t.push(n[e-1])}})},next:function(t,e){return d._traverse.call(this,t,e,function(t,e,n){if(e<n.length-1){return t.push(n[e+1])}})},_traverse:function(t,e,i){var o,l;if(t==null){t="vertical"}if(e==null){e=r}l=h.aggregate(e);o=[];this.each(function(){var e;e=n.inArray(this,l[t]);return i(o,e,l[t])});return this.pushStack(o)},_invoke:function(t){this.each(function(){var e;e=l.getWaypointsByElement(this);return n.each(e,function(e,n){n[t]();return true})});return this}};n.fn[g]=function(){var t,r;r=arguments[0],t=2<=arguments.length?e.call(arguments,1):[];if(d[r]){return d[r].apply(this,t)}else if(n.isFunction(r)){return d.init.apply(this,arguments)}else if(n.isPlainObject(r)){return d.init.apply(this,[null,r])}else if(!r){return n.error("jQuery Waypoints needs a callback function or handler option.")}else{return n.error("The "+r+" method does not exist in jQuery Waypoints.")}};n.fn[g].defaults={context:r,continuous:true,enabled:true,horizontal:false,offset:0,triggerOnce:false};h={refresh:function(){return n.each(c,function(t,e){return e.refresh()})},viewportHeight:function(){var t;return(t=r.innerHeight)!=null?t:i.height()},aggregate:function(t){var e,r,i;e=s;if(t){e=(i=c[n(t)[0][u]])!=null?i.waypoints:void 0}if(!e){return[]}r={horizontal:[],vertical:[]};n.each(r,function(t,i){n.each(e[t],function(t,e){return i.push(e)});i.sort(function(t,e){return t.offset-e.offset});r[t]=n.map(i,function(t){return t.element});return r[t]=n.unique(r[t])});return r},above:function(t){if(t==null){t=r}return h._filter(t,"vertical",function(t,e){return e.offset<=t.oldScroll.y})},below:function(t){if(t==null){t=r}return h._filter(t,"vertical",function(t,e){return e.offset>t.oldScroll.y})},left:function(t){if(t==null){t=r}return h._filter(t,"horizontal",function(t,e){return e.offset<=t.oldScroll.x})},right:function(t){if(t==null){t=r}return h._filter(t,"horizontal",function(t,e){return e.offset>t.oldScroll.x})},enable:function(){return h._invoke("enable")},disable:function(){return h._invoke("disable")},destroy:function(){return h._invoke("destroy")},extendFn:function(t,e){return d[t]=e},_invoke:function(t){var e;e=n.extend({},s.vertical,s.horizontal);return n.each(e,function(e,n){n[t]();return true})},_filter:function(t,e,r){var i,o;i=c[n(t)[0][u]];if(!i){return[]}o=[];n.each(i.waypoints[e],function(t,e){if(r(i,e)){return o.push(e)}});o.sort(function(t,e){return t.offset-e.offset});return n.map(o,function(t){return t.element})}};n[m]=function(){var t,n;n=arguments[0],t=2<=arguments.length?e.call(arguments,1):[];if(h[n]){return h[n].apply(null,t)}else{return h.aggregate.call(null,n)}};n[m].settings={resizeThrottle:100,scrollThrottle:30};return i.on("load.waypoints",function(){return n[m]("refresh")})})}).call(this);;(function() {
+//# sourceMappingURL=angular-scroll.min.js.map;(function() {
     "use strict";
     var app;
-    app = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress" ]);
+    app = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress", "listServices" ]);
     app.config([ "$routeProvider", function($routeProvider) {
         return $routeProvider.when("/lists", {
             templateUrl: "partials/list.html",
@@ -6012,38 +6005,10 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             });
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", function($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress) {
-        var addWaypoints, converter, removeSpinner;
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", function($scope, $routeParams, $http, $location, $sce, listService) {
+        var converter;
         converter = new Showdown.converter();
-        ngProgress.height("10px");
-        ngProgress.color("#ffffff");
-        ngProgress.start();
-        removeSpinner = function() {
-            ngProgress.complete();
-            return $("#spinner").animate({
-                opacity: 0
-            }, 600, function() {
-                return $("#spinner").remove();
-            });
-        };
-        addWaypoints = function() {
-            return $("a.item-order-link").waypoint({
-                context: ".frame",
-                offset: 20,
-                handler: function(direction) {
-                    var order;
-                    if (direction === "down") {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    } else {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    }
-                }
-            });
-        };
+        listService.progressInit();
         client.entries({
             "sys.id": $routeParams.listId,
             include: 10
@@ -6053,67 +6018,89 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
-            addWaypoints();
-            return setTimeout(removeSpinner, 2e3);
+            return setTimeout(listService.removeSpinner, 2e3);
         });
-        $scope.trust = function(body) {
+        return $scope.trust = function(body) {
             return $sce.trustAsHtml(body);
-        };
-        return $scope.gotoBottom = function(order) {
-            var old;
-            old = $location.hash();
-            $location.hash(order);
-            $anchorScroll();
-            return $location.hash(old);
         };
     } ]);
 }).call(this);;(function() {
+    "use strict";
     var listDirectives;
     listDirectives = angular.module("listDirectives", []);
     listDirectives.directive("sendHeight", function() {
+        var link;
+        link = function($scope, element, attrs) {
+            var height, reset, sendHeight;
+            height = element.parent().innerHeight();
+            reset = function() {
+                height = element.parent().innerHeight();
+                return sendHeight(height);
+            };
+            sendHeight = function(height) {
+                var message, messageJSON;
+                message = {
+                    height: height
+                };
+                messageJSON = JSON.stringify(message);
+                console.log(messageJSON);
+                return window.parent.postMessage(messageJSON, "*");
+            };
+            sendHeight(height);
+            return $(window).on("resize", function() {
+                return reset();
+            });
+        };
         return {
             restrict: "A",
             replace: false,
-            link: function() {
-                var height, reset, sendHeight;
-                height = $(".frame").innerHeight();
-                console.log(height);
-                reset = function() {
-                    height = $(".frame").innerHeight();
-                    return sendHeight(height);
-                };
-                sendHeight = function(height) {
-                    var message, messageJSON;
-                    message = {
-                        height: height
-                    };
-                    messageJSON = JSON.stringify(message);
-                    console.log(messageJSON);
-                    return window.parent.postMessage(messageJSON, "*");
-                };
-                sendHeight(height);
-                return $(window).on("resize", function() {
-                    return reset();
-                });
-            }
+            link: link
         };
     });
     listDirectives.directive("sticky", function() {
-        return {
-            restrict: "A",
-            replace: false,
-            link: function() {
-                return $(".sidebar").waypoint({
-                    context: ".frame",
-                    handler: function(direction) {
-                        if (direction === "down") {
-                            return $(".sidebar").addClass("sticky");
-                        } else {
-                            return $(".sidebar").removeClass("sticky");
-                        }
+        var link;
+        link = function($scope, element, attrs) {
+            return element.waypoint({
+                context: ".frame",
+                handler: function(direction) {
+                    if (direction === "down") {
+                        return element.addClass("sticky");
+                    } else {
+                        return element.removeClass("sticky");
                     }
-                });
-            }
+                }
+            });
+        };
+        return {
+            link: link
         };
     });
+}).call(this);;(function() {
+    "use strict";
+    var listServices;
+    listServices = angular.module("listServices", []);
+    listServices.factory("listService", [ "ngProgress", function(ngProgress) {
+        var progressInit, removeSpinner;
+        progressInit = function() {
+            ngProgress.height("10px");
+            ngProgress.color("#ffffff");
+            return ngProgress.start();
+        };
+        removeSpinner = function() {
+            ngProgress.complete();
+            return $("#spinner").animate({
+                opacity: 0
+            }, 600, function() {
+                return $("#spinner").remove();
+            });
+        };
+        return {
+            progressInit: function() {
+                return progressInit();
+            },
+            removeSpinner: function() {
+                return removeSpinner();
+            }
+        };
+    } ]);
 }).call(this);

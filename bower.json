@@ -8,7 +8,8 @@
     "angular-route": "~1.2.x",
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
-    "contentful": "~0.1.0"
+    "contentful": "~0.1.0",
+    "jquery-waypoints": "~2.0.5"
   },
   "private": true
 }
