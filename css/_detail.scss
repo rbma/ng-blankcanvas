@@ -328,12 +328,16 @@
 						border: 2px solid black;
 						@include vendorize(border-radius, 50%);
 					}
-					&:hover, &.active{
-						background-color: black;
+				}
+				&:hover, &.active{
+					.sidebar-item{
+						background-color: black !important;
 						color: white !important;
-						.order{
-							border: 2px solid white !important; 
-						}
+
+					}
+					
+					.order{
+						border: 2px solid white !important; 
 					}
 				}
 				&.active{

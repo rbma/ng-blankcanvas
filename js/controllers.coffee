@@ -8,6 +8,10 @@ client = contentful.createClient
 		space: '6s2rqhmim2vw'
 
 
+
+
+
+
 #LIST INDEX PAGE
 listControllers.controller('ListListCtrl', ['$scope', '$http', ($scope, $http) ->
 	$scope.lists = ""
@@ -20,47 +24,28 @@ listControllers.controller('ListListCtrl', ['$scope', '$http', ($scope, $http) -
 ])
 
 
+
+
+
+
+
 #LIST DETAILS PAGE
 listControllers.controller('ListDetailCtrl', [
 	'$scope', 
 	'$routeParams',
 	'$http',
 	'$location',
-	'$anchorScroll',
 	'$sce',
-	'ngProgress',
 	'listService',
-	($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress, listService) ->
+	($scope, $routeParams, $http, $location, $sce, listService) ->
 		
 		converter = new Showdown.converter()
 
+		
+		#kick off progress bar
 		listService.progressInit()
 
 		
-
-
-		#TODO: fix waypoints offset when scrolling up
-		addWaypoints = ->
-			$('a.item-order-link').waypoint({
-					context: '.frame'
-					offset: 20
-					handler: (direction) ->
-						if direction == 'down'
-							order = $(this).data('order')
-
-							#clear actives
-							$('.sidebar-item').removeClass "active"
-							$(".sidebar-item[data-order=#{order}]").addClass "active"
-						else
-							order = $(this).data('order')
-							#clear
-							$('.sidebar-item').removeClass "active"
-							$(".sidebar-item[data-order=#{order}]").addClass "active"
-
-				})
-
-
-
 		client.entries({'sys.id': $routeParams.listId, 'include': 10}).done (data) ->
 			$scope.$apply(->
 				$scope.list = data[0]
@@ -69,20 +54,12 @@ listControllers.controller('ListDetailCtrl', [
 			)
 
 
-			addWaypoints()
-
 			setTimeout(listService.removeSpinner, 2000)
 
 			
 		$scope.trust = (body) ->
 			return $sce.trustAsHtml(body)
 
-		$scope.gotoBottom = (order) ->
-			old = $location.hash()
-			$location.hash(order)
-			$anchorScroll()
-			#reset to old
-			$location.hash(old)
 
 
 ])

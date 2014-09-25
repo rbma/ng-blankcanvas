@@ -346,11 +346,11 @@ body {
           border: 2px solid black;
           -o-border-radius: 50%;
           border-radius: 50%; }
-        .sidebar .sidebar-list a .sidebar-item:hover, .sidebar .sidebar-list a .sidebar-item.active {
-          background-color: black;
-          color: white !important; }
-          .sidebar .sidebar-list a .sidebar-item:hover .order, .sidebar .sidebar-list a .sidebar-item.active .order {
-            border: 2px solid white !important; }
+      .sidebar .sidebar-list a:hover .sidebar-item, .sidebar .sidebar-list a.active .sidebar-item {
+        background-color: black !important;
+        color: white !important; }
+      .sidebar .sidebar-list a:hover .order, .sidebar .sidebar-list a.active .order {
+        border: 2px solid white !important; }
       .sidebar .sidebar-list a.active {
         color: white; }
   .sidebar.sticky {

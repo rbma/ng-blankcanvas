@@ -15,8 +15,8 @@
     <p ng-bind-html="trust(list.fields.body)" class="intro"></p>
     <ul class="list-items">
       <li ng-repeat="item in list.fields.individualListItems" class="list-item">
-        <div class="list-container">
-          <div class="list-titles"><a id="{{item.fields.anchorLinkTag}}" data-order="{{item.fields.order}}" add-waypoint="add-waypoint" class="item-order-link"></a><span class="item-order">{{item.fields.order}}</span>
+        <div id="{{item.fields.anchorLinkTag}}" class="list-container">
+          <div class="list-titles"><span class="item-order">{{item.fields.order}}</span>
             <h3 class="item-title">{{item.fields.title}}</h3>
           </div>
           <div class="item-body">
@@ -28,7 +28,7 @@
     </ul>
     <div sticky="sticky" class="sidebar"><a href="#top" du-smooth-scroll="du-smooth-scroll" class="topscroll"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
         <h4 class="radio-picks-sidebar">{{list.fields.parentTitle}}</h4></a>
-      <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" class="{{item.fields.anchorLinkTag}}">
+      <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" class="{{item.fields.anchorLinkTag}}">
           <li data-order="{{item.fields.order}}" class="sidebar-item">
             <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
           </li></a></ul>

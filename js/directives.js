@@ -49,28 +49,4 @@
             link: link
         };
     });
-    listDirectives.directive("addWaypoint", function() {
-        var link;
-        link = function($scope, element, attrs) {
-            return element.waypoint({
-                context: ".frame",
-                offset: 20,
-                handler: function(direction) {
-                    var order;
-                    if (direction === "down") {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    } else {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    }
-                }
-            });
-        };
-        return {
-            link: link
-        };
-    });
 }).call(this);

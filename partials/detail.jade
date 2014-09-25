@@ -39,11 +39,9 @@ div(id="spinner")
 			
 			li(class="list-item", ng-repeat="item in list.fields.individualListItems")
 				
-				.list-container
+				.list-container(id="{{item.fields.anchorLinkTag}}")
 					
 					.list-titles
-						
-						a(id="{{item.fields.anchorLinkTag}}", class="item-order-link", data-order="{{item.fields.order}}", add-waypoint)
 						
 						span(class="item-order") {{item.fields.order}}
 						
@@ -77,7 +75,7 @@ div(id="spinner")
 				a(ng-repeat="item in list.fields.individualListItems", 
 					class="{{item.fields.anchorLinkTag}}",
 					href="#{{item.fields.anchorLinkTag}}",
-					du-smooth-scroll)
+					du-smooth-scroll du-scrollspy)
 						
 					
 					li(class="sidebar-item" data-order="{{item.fields.order}}")

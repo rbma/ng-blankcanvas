@@ -18,28 +18,10 @@
             });
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", "listService", function($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress, listService) {
-        var addWaypoints, converter;
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", function($scope, $routeParams, $http, $location, $sce, listService) {
+        var converter;
         converter = new Showdown.converter();
         listService.progressInit();
-        addWaypoints = function() {
-            return $("a.item-order-link").waypoint({
-                context: ".frame",
-                offset: 20,
-                handler: function(direction) {
-                    var order;
-                    if (direction === "down") {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    } else {
-                        order = $(this).data("order");
-                        $(".sidebar-item").removeClass("active");
-                        return $(".sidebar-item[data-order=" + order + "]").addClass("active");
-                    }
-                }
-            });
-        };
         client.entries({
             "sys.id": $routeParams.listId,
             include: 10
@@ -49,18 +31,10 @@
                 console.log($scope.list);
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
-            addWaypoints();
             return setTimeout(listService.removeSpinner, 2e3);
         });
-        $scope.trust = function(body) {
+        return $scope.trust = function(body) {
             return $sce.trustAsHtml(body);
-        };
-        return $scope.gotoBottom = function(order) {
-            var old;
-            old = $location.hash();
-            $location.hash(order);
-            $anchorScroll();
-            return $location.hash(old);
         };
     } ]);
 }).call(this);
