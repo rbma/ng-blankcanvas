@@ -1,3 +1,5 @@
+'use strict'
+
 listDirectives = angular.module('listDirectives', [])
 
 listDirectives.directive('sendHeight', ->
@@ -53,5 +55,43 @@ listDirectives.directive('sticky', ->
 
 	}
 )
+
+
+
+
+
+listDirectives.directive('addWaypoint', ->
+
+	link = ($scope, element, attrs) ->
+		element.waypoint({
+			context: '.frame'
+			offset: 20
+			handler: (direction) ->
+				if direction == 'down'
+					order = $(this).data('order')
+
+					#clear all actives
+					$('.sidebar-item').removeClass "active"
+
+					#add to selected one
+					$(".sidebar-item[data-order=#{order}]").addClass "active"
+				
+				else
+					order = $(this).data('order')
+					
+					#clear
+					$('.sidebar-item').removeClass "active"
+					$(".sidebar-item[data-order=#{order}]").addClass "active"
+
+			})
+		
+
+	return{
+		link: link
+	}
+)
+
+
+
 
 

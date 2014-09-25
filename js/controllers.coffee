@@ -29,21 +29,14 @@ listControllers.controller('ListDetailCtrl', [
 	'$anchorScroll',
 	'$sce',
 	'ngProgress',
-	($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress) ->
+	'listService',
+	($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress, listService) ->
 		
 		converter = new Showdown.converter()
 
-		ngProgress.height('10px')
-		ngProgress.color('#ffffff')
+		listService.progressInit()
 
-		ngProgress.start()
-
-		removeSpinner = ->
-			ngProgress.complete()
-			$('#spinner').animate
-				opacity: 0
-			, 600, ->
-				$('#spinner').remove()
+		
 
 
 		#TODO: fix waypoints offset when scrolling up
@@ -78,7 +71,7 @@ listControllers.controller('ListDetailCtrl', [
 
 			addWaypoints()
 
-			setTimeout(removeSpinner, 2000)
+			setTimeout(listService.removeSpinner, 2000)
 
 			
 		$scope.trust = (body) ->

@@ -35,6 +35,41 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: touch; }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999999;
+  border: 0; }
+
+#spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  background-color: black;
+  color: white;
+  z-index: 9999999999999; }
+
+.frame {
+  width: 100%;
+  min-height: 700px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white; }
+  @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .frame {
+      min-height: 700px; } }
+  @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    .frame {
+      min-height: 700px; } }
+
 .lists {
   list-style-type: none;
   text-align: center; }
@@ -55,28 +90,6 @@ body {
             max-width: 100%;
             height: auto; }
 
-.frame {
-  width: 100%;
-  min-height: 900px;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: white; }
-
-#spinner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 800px;
-  background-color: black;
-  color: white;
-  z-index: 9999999999999; }
-
 .list-wrapper {
   position: absolute;
   display: block;
@@ -87,11 +100,22 @@ body {
   min-height: 100%;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s; }
+  @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .list-wrapper {
+      width: 90%;
+      margin-left: 5%; } }
   .list-wrapper .rbma-radio-picks {
     font-size: 2em;
     border-bottom: 5px solid black;
     width: 100%;
     margin-left: 10%; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .rbma-radio-picks {
+        width: 90%;
+        margin-left: 5%; } }
+    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+      .list-wrapper .rbma-radio-picks {
+        font-size: 1.5em; } }
     .list-wrapper .rbma-radio-picks .title {
       margin: 0;
       padding: 0; }
@@ -99,6 +123,13 @@ body {
     font-size: 4em;
     margin: 0;
     margin-left: 10%; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .author {
+        margin-left: 5%;
+        width: 90%; } }
+    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+      .list-wrapper .author {
+        font-size: 2.5em; } }
   .list-wrapper .list-thumbs {
     list-style-type: none;
     padding: none;
@@ -107,6 +138,9 @@ body {
     text-align: center;
     z-index: 1;
     margin-top: 68px; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .list-thumbs {
+        display: none; } }
     .list-wrapper .list-thumbs li {
       display: inline-block;
       text-align: center;
@@ -161,14 +195,37 @@ body {
             transform: scale(2); }
         .list-wrapper .list-thumbs li .thumb-container:hover {
           z-index: 999; }
+  .list-wrapper .list-wrapper {
+    margin-bottom: 100px; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .list-wrapper {
+        width: 90%;
+        margin-left: 5%; } }
   .list-wrapper .author-hero-image {
     display: none; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .author-hero-image {
+        width: 90%;
+        height: auto;
+        margin-left: 5%;
+        margin-top: 10px;
+        display: block; } }
   .list-wrapper .intro {
     width: 66.6666666666%;
     margin-left: 20%;
     margin-top: 88px;
     font-size: 1.7em;
     line-height: 1.5; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .intro {
+        width: 90%;
+        height: auto;
+        margin-left: 5%;
+        margin-top: 10px;
+        display: block; } }
+    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+      .list-wrapper .intro {
+        font-size: 1.2em; } }
   .list-wrapper .list-items {
     width: 66.6666666666%;
     margin-left: 20%;
@@ -176,7 +233,18 @@ body {
     line-height: 1.5;
     list-style-type: none;
     padding: 0;
-    margin-bottom: 480px; }
+    margin-bottom: 100px; }
+    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+      .list-wrapper .list-items {
+        width: 90%;
+        height: auto;
+        margin-left: 5%;
+        margin-top: 10px;
+        display: block; } }
+    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+      .list-wrapper .list-items {
+        font-size: 1.2em;
+        margin-bottom: 500px; } }
     .list-wrapper .list-items .list-item {
       padding: 0; }
       .list-wrapper .list-items .list-item .list-container {
@@ -233,6 +301,9 @@ body {
   left: 10px;
   width: 17.0000003333%;
   text-align: left; }
+  @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .sidebar {
+      display: none; } }
   .sidebar a.topscroll {
     text-decoration: none;
     color: black; }
@@ -316,101 +387,3 @@ body {
         -ms-box-shadow: none;
         -o-box-shadow: none;
         box-shadow: none; }
-
-@media screen and (max-width: 1024px) {
-  .list-wrapper {
-    width: 90%;
-    margin-left: 5%; }
-    .list-wrapper .rbma-radio-picks {
-      font-size: 2em;
-      border-bottom: 5px solid black;
-      width: 100%;
-      margin-left: 0; }
-      .list-wrapper .rbma-radio-picks:after {
-        content: 'RBMA Radio Picks'; }
-    .list-wrapper .author {
-      font-size: 4em;
-      margin: 0;
-      margin-left: 0; }
-    .list-wrapper .author-hero-image {
-      width: 80%;
-      height: auto;
-      margin-left: 10%;
-      margin-top: 10px;
-      display: block; }
-    .list-wrapper .intro {
-      width: 100%;
-      margin-left: 0;
-      margin-top: 10px;
-      font-size: 1.4em;
-      line-height: 1.5; }
-    .list-wrapper ul.list-items {
-      width: 100%;
-      margin-left: 0; }
-      .list-wrapper ul.list-items .list-item .list-container .item-body .item-image-wrapper {
-        max-width: 98%;
-        margin-left: 1%;
-        border: none; }
-        .list-wrapper ul.list-items .list-item .list-container .item-body .item-image-wrapper img {
-          height: contain; }
-      .list-wrapper ul.list-items .list-item .list-container .item-body p {
-        font-size: 0.8em; }
-        .list-wrapper ul.list-items .list-item .list-container .item-body p .video {
-          position: relative;
-          padding-bottom: 56.25%;
-          padding-top: 30px;
-          width: 80%;
-          margin-left: 10%;
-          height: 0;
-          overflow: hidden;
-          margin-bottom: 50px; }
-          .list-wrapper ul.list-items .list-item .list-container .item-body p .video iframe, .list-wrapper ul.list-items .list-item .list-container .item-body p .video object, .list-wrapper ul.list-items .list-item .list-container .item-body p .video embed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; }
-
-  .sidebar {
-    display: none; }
-
-  .list-thumbs {
-    display: none; }
-
-  .intro {
-    width: 100%;
-    margin-left: 0; } }
-@media screen and (max-width: 600px) {
-  .frame {
-    width: 100%;
-    min-height: 600px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: fixed;
-    top: 0;
-    left: 0; }
-
-  .list-wrapper {
-    width: 90%;
-    margin-left: 5%; }
-    .list-wrapper ul.list-items {
-      width: 100%;
-      margin-left: 0; }
-      .list-wrapper ul.list-items .list-item .list-container .item-body .item-image-wrapper {
-        max-width: 98%;
-        margin-left: 1%;
-        border: none; }
-        .list-wrapper ul.list-items .list-item .list-container .item-body .item-image-wrapper img {
-          height: contain; }
-      .list-wrapper ul.list-items .list-item .list-container .item-body p {
-        font-size: 0.8em; }
-
-  .sidebar {
-    display: none; }
-
-  .list-thumbs {
-    display: none; }
-
-  .intro {
-    width: 100%;
-    margin-left: 0; } }

@@ -18,20 +18,10 @@
             });
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", function($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress) {
-        var addWaypoints, converter, removeSpinner;
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$anchorScroll", "$sce", "ngProgress", "listService", function($scope, $routeParams, $http, $location, $anchorScroll, $sce, ngProgress, listService) {
+        var addWaypoints, converter;
         converter = new Showdown.converter();
-        ngProgress.height("10px");
-        ngProgress.color("#ffffff");
-        ngProgress.start();
-        removeSpinner = function() {
-            ngProgress.complete();
-            return $("#spinner").animate({
-                opacity: 0
-            }, 600, function() {
-                return $("#spinner").remove();
-            });
-        };
+        listService.progressInit();
         addWaypoints = function() {
             return $("a.item-order-link").waypoint({
                 context: ".frame",
@@ -60,7 +50,7 @@
                 return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
             });
             addWaypoints();
-            return setTimeout(removeSpinner, 2e3);
+            return setTimeout(listService.removeSpinner, 2e3);
         });
         $scope.trust = function(body) {
             return $sce.trustAsHtml(body);

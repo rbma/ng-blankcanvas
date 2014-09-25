@@ -32,7 +32,8 @@ module.exports = function(grunt){
 					'bower_components/FitText.js/jquery.fittext.js',
 					'js/app.js',
 					'js/controllers.js',
-					'js/directives.js'
+					'js/directives.js',
+					'js/services.js'
 				],
 				dest: 'dist/app.concat.js',
 			},
