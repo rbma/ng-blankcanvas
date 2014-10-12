@@ -1,37 +1,36 @@
 (function() {
     "use strict";
-    var client, listControllers;
+    var listControllers;
     listControllers = angular.module("listControllers", []);
-    client = contentful.createClient({
-        accessToken: "c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d",
-        space: "6s2rqhmim2vw"
-    });
-    listControllers.controller("ListListCtrl", [ "$scope", "$http", function($scope, $http) {
+    listControllers.controller("ListListCtrl", [ "$scope", "$http", "contentfulClient", function($scope, $http, contentfulClient) {
         $scope.lists = "";
-        return client.entries({
+        return contentfulClient.entries({
             content_type: "1iKCsUgXpSuSouwuMIYACy",
             include: 1
-        }).done(function(data) {
-            return $scope.$apply(function() {
-                $scope.lists = data;
-                return console.log($scope.lists);
-            });
+        }).then(function(data) {
+            $scope.lists = data;
+            return console.log($scope.lists);
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", function($scope, $routeParams, $http, $location, $sce, listService) {
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", "contentfulClient", function($scope, $routeParams, $http, $location, $sce, listService, contentfulClient) {
         var converter;
         converter = new Showdown.converter();
         listService.progressInit();
-        client.entries({
+        contentfulClient.entries({
             "sys.id": $routeParams.listId,
             include: 10
-        }).done(function(data) {
-            $scope.$apply(function() {
-                $scope.list = data[0];
-                console.log($scope.list);
-                return $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
-            });
-            return setTimeout(listService.removeSpinner, 2e3);
+        }).then(function(data) {
+            var item, _i, _len, _ref;
+            $scope.list = data[0];
+            console.log($scope.list);
+            $scope.list.fields.body = converter.makeHtml($scope.list.fields.body);
+            _ref = $scope.list.fields.individualListItems;
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                item = _ref[_i];
+                console.log(item);
+                item.fields.body = converter.makeHtml(item.fields.body);
+            }
+            return listService.removeSpinner();
         });
         return $scope.trust = function(body) {
             return $sce.trustAsHtml(body);

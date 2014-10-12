@@ -5,14 +5,14 @@ app = angular.module('listfeature', [
 	'ngSanitize',
 	'listControllers',
 	'listDirectives',
-	'ui.utils',
 	'duScroll',
+	'ng-contentful'
 	'ngProgress',
 	'listServices'
 ])
 
 
-app.config(['$routeProvider', ($routeProvider) ->
+app.config(['$routeProvider', '$locationProvider', 'contentfulClientProvider', ($routeProvider, $locationProvider, contentfulClientProvider) ->
 	$routeProvider.when('/lists', {
 		templateUrl: 'partials/list.html',
 		controller: 'ListListCtrl'
@@ -24,6 +24,9 @@ app.config(['$routeProvider', ($routeProvider) ->
 	.otherwise({
 			redirectTo: '/lists'
 			})
+
+	contentfulClientProvider.setSpaceId('6s2rqhmim2vw')
+	contentfulClientProvider.setAccessToken('c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d')
 ])
 
 
