@@ -55,6 +55,7 @@ body{
 		min-height: 700px;
 	}
 	@media (max-width: 767px){
-		min-height: 700px;
+		height: 100%;
+		min-height: 767px;
 	}
 }

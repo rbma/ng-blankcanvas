@@ -32,6 +32,7 @@ listServices.factory('stickyService', ['$rootScope', '$window', ($rootScope, $wi
 		width = $window.innerWidth
 
 		if width < 1024
+			$('.sidebar').waypoint('destroy')
 			return false
 		else
 			return true
