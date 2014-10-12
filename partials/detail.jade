@@ -3,7 +3,7 @@ div(id="spinner")
 .frame(du-scroll-container)
 	
 
-	.list-wrapper(id="top" send-height)
+	.list-wrapper(id="top")
 		
 
 		.rbma-radio-picks
@@ -58,40 +58,40 @@ div(id="spinner")
 		
 
 
-
-		.sidebar(sticky)
+		div(ng-show="desktop")
+			.sidebar(sticky)
+				
+				a(href="#top", du-smooth-scroll, class="topscroll")
+					
+					img(ng-src="{{list.fields.authorImage.fields.file.url}}")
+					
+					h4(class="radio-picks-sidebar") {{list.fields.parentTitle}}
+				
+				
 			
-			a(href="#top", du-smooth-scroll, class="topscroll")
-				
-				img(ng-src="{{list.fields.authorImage.fields.file.url}}")
-				
-				h4(class="radio-picks-sidebar") {{list.fields.parentTitle}}
-				
-				
-			
 
-			ul(class="sidebar-list")
-				
-				a(ng-repeat="item in list.fields.individualListItems", 
-					class="{{item.fields.anchorLinkTag}}",
-					href="#{{item.fields.anchorLinkTag}}",
-					du-smooth-scroll du-scrollspy)
-						
+				ul(class="sidebar-list")
 					
-					li(class="sidebar-item" data-order="{{item.fields.order}}")
-						.order {{item.fields.order}}
-						{{item.fields.title}}
+					a(ng-repeat="item in list.fields.individualListItems", 
+						class="{{item.fields.anchorLinkTag}}",
+						href="#{{item.fields.anchorLinkTag}}",
+						du-smooth-scroll du-scrollspy)
+							
+						
+						li(class="sidebar-item" data-order="{{item.fields.order}}")
+							.order {{item.fields.order}}
+							.sidebar-title {{item.fields.title}}
 
-			.button-group
-				
-				.button
+				.button-group
 					
-					a(href="https://twitter.com/share?url={{feature.fields.rbmaUrl}}&via=rbma&text={{list.fields.title}}", target="blank")
+					.button
 						
-						i(class="fa fa-twitter")
-				
-				.button
+						a(href="https://twitter.com/share?url={{feature.fields.rbmaUrl}}&via=rbma&text={{list.fields.title}}", target="blank")
+							
+							i(class="fa fa-twitter")
 					
-					a(href="https://www.facebook.com/sharer/sharer.php?u={{list.fields.rbma_url}}", target="blank")
+					.button
 						
-						i(class="fa fa-facebook")
+						a(href="https://www.facebook.com/sharer/sharer.php?u={{list.fields.rbma_url}}", target="blank")
+							
+							i(class="fa fa-facebook")

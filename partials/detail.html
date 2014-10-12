@@ -1,7 +1,7 @@
 
 <div id="spinner"></div>
 <div du-scroll-container="du-scroll-container" class="frame">
-  <div id="top" send-height="send-height" class="list-wrapper">
+  <div id="top" class="list-wrapper">
     <div class="rbma-radio-picks">
       <h1 class="title">{{list.fields.parentTitle}}</h1>
     </div>
@@ -26,15 +26,18 @@
         </div>
       </li>
     </ul>
-    <div sticky="sticky" class="sidebar"><a href="#top" du-smooth-scroll="du-smooth-scroll" class="topscroll"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
-        <h4 class="radio-picks-sidebar">{{list.fields.parentTitle}}</h4></a>
-      <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" class="{{item.fields.anchorLinkTag}}">
-          <li data-order="{{item.fields.order}}" class="sidebar-item">
-            <div class="order">{{item.fields.order}}</div>{{item.fields.title}}
-          </li></a></ul>
-      <div class="button-group">
-        <div class="button"><a href="https://twitter.com/share?url={{feature.fields.rbmaUrl}}&amp;via=rbma&amp;text={{list.fields.title}}" target="blank"><i class="fa fa-twitter"></i></a></div>
-        <div class="button"><a href="https://www.facebook.com/sharer/sharer.php?u={{list.fields.rbma_url}}" target="blank"><i class="fa fa-facebook"></i></a></div>
+    <div ng-show="desktop">
+      <div sticky="sticky" class="sidebar"><a href="#top" du-smooth-scroll="du-smooth-scroll" class="topscroll"><img ng-src="{{list.fields.authorImage.fields.file.url}}"/>
+          <h4 class="radio-picks-sidebar">{{list.fields.parentTitle}}</h4></a>
+        <ul class="sidebar-list"><a ng-repeat="item in list.fields.individualListItems" href="#{{item.fields.anchorLinkTag}}" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" class="{{item.fields.anchorLinkTag}}">
+            <li data-order="{{item.fields.order}}" class="sidebar-item">
+              <div class="order">{{item.fields.order}}</div>
+              <div class="sidebar-title">{{item.fields.title}}</div>
+            </li></a></ul>
+        <div class="button-group">
+          <div class="button"><a href="https://twitter.com/share?url={{feature.fields.rbmaUrl}}&amp;via=rbma&amp;text={{list.fields.title}}" target="blank"><i class="fa fa-twitter"></i></a></div>
+          <div class="button"><a href="https://www.facebook.com/sharer/sharer.php?u={{list.fields.rbma_url}}" target="blank"><i class="fa fa-facebook"></i></a></div>
+        </div>
       </div>
     </div>
   </div>

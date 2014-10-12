@@ -26,4 +26,21 @@
             }
         };
     } ]);
+    listServices.factory("stickyService", [ "$rootScope", "$window", function($rootScope, $window) {
+        var getDevice;
+        getDevice = function() {
+            var width;
+            width = $window.innerWidth;
+            if (width < 1024) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+        return {
+            getDevice: function() {
+                return getDevice();
+            }
+        };
+    } ]);
 }).call(this);

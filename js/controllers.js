@@ -8,13 +8,13 @@
             content_type: "1iKCsUgXpSuSouwuMIYACy",
             include: 1
         }).then(function(data) {
-            $scope.lists = data;
-            return console.log($scope.lists);
+            return $scope.lists = data;
         });
     } ]);
-    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", "contentfulClient", function($scope, $routeParams, $http, $location, $sce, listService, contentfulClient) {
+    listControllers.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", "contentfulClient", "stickyService", function($scope, $routeParams, $http, $location, $sce, listService, contentfulClient, stickyService) {
         var converter;
         converter = new Showdown.converter();
+        $scope.desktop = true;
         listService.progressInit();
         contentfulClient.entries({
             "sys.id": $routeParams.listId,
@@ -27,7 +27,6 @@
             _ref = $scope.list.fields.individualListItems;
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                 item = _ref[_i];
-                console.log(item);
                 item.fields.body = converter.makeHtml(item.fields.body);
             }
             return listService.removeSpinner();

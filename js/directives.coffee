@@ -27,8 +27,6 @@ listDirectives.directive('sendHeight', ->
 
 	
 	return{
-		restrict: 'A'
-		replace: false
 		link: link
 	}
 )

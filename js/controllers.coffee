@@ -13,7 +13,6 @@ listControllers.controller('ListListCtrl', ['$scope', '$http', 'contentfulClient
 
 	contentfulClient.entries({'content_type': '1iKCsUgXpSuSouwuMIYACy', 'include': 1}).then (data) ->
 		$scope.lists = data
-		console.log $scope.lists
 ])
 
 
@@ -31,9 +30,12 @@ listControllers.controller('ListDetailCtrl', [
 	'$sce',
 	'listService',
 	'contentfulClient'
-	($scope, $routeParams, $http, $location, $sce, listService, contentfulClient) ->
+	'stickyService'
+	($scope, $routeParams, $http, $location, $sce, listService, contentfulClient, stickyService) ->
 		
 		converter = new Showdown.converter()
+
+		$scope.desktop = true
 
 		
 		#kick off progress bar
@@ -47,10 +49,18 @@ listControllers.controller('ListDetailCtrl', [
 
 			#loop through each item and convert to html
 			for item in $scope.list.fields.individualListItems
-				console.log item
 				item.fields.body = converter.makeHtml(item.fields.body)
 
 			listService.removeSpinner()
+
+
+		#only show sticky if on desktop
+		# $scope.desktop = stickyService.getDevice()
+
+		#check again for device on resize
+		# $(window).on('resize', ->
+		# 	$scope.desktop = stickyService.getDevice()
+		# 	)
 
 			
 		$scope.trust = (body) ->

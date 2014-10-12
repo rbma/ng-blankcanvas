@@ -25,3 +25,19 @@ listServices.factory('listService', ['ngProgress', (ngProgress) ->
 	}
 
 ])
+
+listServices.factory('stickyService', ['$rootScope', '$window', ($rootScope, $window) ->
+
+	getDevice = ->
+		width = $window.innerWidth
+
+		if width < 1024
+			return false
+		else
+			return true
+
+	return{
+		getDevice: ->
+			getDevice()
+	}
+])

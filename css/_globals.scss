@@ -51,10 +51,10 @@ body{
 	top: 0;
 	left: 0;
 	background-color: white;
-	@media only screen and (max-width: 1024px), screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+	@media (max-width: 1024px) {
 		min-height: 700px;
 	}
-	@media only screen and (max-width: 767px), screen and (min-device-width : 320px) and (max-device-width : 767px) {
+	@media (max-width: 767px){
 		min-height: 700px;
 	}
 }

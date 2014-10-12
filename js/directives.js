@@ -26,8 +26,6 @@
             });
         };
         return {
-            restrict: "A",
-            replace: false,
             link: link
         };
     });

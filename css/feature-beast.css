@@ -63,10 +63,10 @@ body {
   top: 0;
   left: 0;
   background-color: white; }
-  @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: 1024px) {
     .frame {
       min-height: 700px; } }
-  @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .frame {
       min-height: 700px; } }
 
@@ -100,20 +100,20 @@ body {
   min-height: 100%;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s; }
-  @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: 1024px) {
     .list-wrapper {
       width: 90%;
       margin-left: 5%; } }
   .list-wrapper .rbma-radio-picks {
-    font-size: 2em;
+    font-size: 1.5em;
     border-bottom: 5px solid black;
-    width: 100%;
-    margin-left: 10%; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    width: 90%;
+    margin-left: 20%; }
+    @media (max-width: 1024px) {
       .list-wrapper .rbma-radio-picks {
         width: 90%;
         margin-left: 5%; } }
-    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .list-wrapper .rbma-radio-picks {
         font-size: 1.5em; } }
     .list-wrapper .rbma-radio-picks .title {
@@ -122,12 +122,12 @@ body {
   .list-wrapper .author {
     font-size: 4em;
     margin: 0;
-    margin-left: 10%; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    margin-left: 20%; }
+    @media (max-width: 1024px) {
       .list-wrapper .author {
         margin-left: 5%;
         width: 90%; } }
-    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .list-wrapper .author {
         font-size: 2.5em; } }
   .list-wrapper .list-thumbs {
@@ -138,7 +138,7 @@ body {
     text-align: center;
     z-index: 1;
     margin-top: 68px; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    @media (max-width: 1024px) {
       .list-wrapper .list-thumbs {
         display: none; } }
     .list-wrapper .list-thumbs li {
@@ -153,10 +153,12 @@ body {
         height: 225px;
         z-index: 1; }
         .list-wrapper .list-thumbs li .thumb-container .img-container {
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
           border: 5px solid black;
           overflow: hidden !important;
-          width: 150px;
-          height: 150px;
+          width: 170px;
+          height: 170px;
           text-align: center;
           background-color: white;
           -webkit-transform: rotate(-45deg);
@@ -197,17 +199,17 @@ body {
           z-index: 999; }
   .list-wrapper .list-wrapper {
     margin-bottom: 100px; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    @media (max-width: 1024px) {
       .list-wrapper .list-wrapper {
         width: 90%;
         margin-left: 5%; } }
   .list-wrapper .author-hero-image {
     display: none; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    @media (max-width: 1024px) {
       .list-wrapper .author-hero-image {
-        width: 90%;
+        width: 40%;
         height: auto;
-        margin-left: 5%;
+        margin-left: 30%;
         margin-top: 10px;
         display: block; } }
   .list-wrapper .intro {
@@ -216,14 +218,14 @@ body {
     margin-top: 88px;
     font-size: 1.7em;
     line-height: 1.5; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    @media (max-width: 1024px) {
       .list-wrapper .intro {
         width: 90%;
         height: auto;
         margin-left: 5%;
         margin-top: 10px;
         display: block; } }
-    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .list-wrapper .intro {
         font-size: 1.2em; } }
   .list-wrapper .list-items {
@@ -234,14 +236,14 @@ body {
     list-style-type: none;
     padding: 0;
     margin-bottom: 100px; }
-    @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    @media (max-width: 1024px) {
       .list-wrapper .list-items {
         width: 90%;
         height: auto;
         margin-left: 5%;
         margin-top: 10px;
         display: block; } }
-    @media only screen and (max-width: 767px), screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .list-wrapper .list-items {
         font-size: 1.2em;
         margin-bottom: 500px; } }
@@ -270,12 +272,18 @@ body {
             line-height: 20px;
             margin-left: 50px; }
         .list-wrapper .list-items .list-item .list-container .item-body .item-image-wrapper {
-          width: 400px;
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
+          width: 100%;
           margin-top: 20px;
-          height: 400px;
+          height: 300px;
           overflow: hidden;
           border: 4px solid black;
           text-align: center; }
+          .list-wrapper .list-items .list-item .list-container .item-body .item-image-wrapper img {
+            text-align: center;
+            height: auto;
+            width: 100%; }
         .list-wrapper .list-items .list-item .list-container .item-body img {
           height: 100%;
           width: auto; }
@@ -301,7 +309,7 @@ body {
   left: 10px;
   width: 17.0000003333%;
   text-align: left; }
-  @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: 1024px) {
     .sidebar {
       display: none; } }
   .sidebar a.topscroll {
@@ -344,8 +352,13 @@ body {
           line-height: 15px;
           height: 15px;
           border: 2px solid black;
+          vertical-align: top;
           -o-border-radius: 50%;
           border-radius: 50%; }
+        .sidebar .sidebar-list a .sidebar-item .sidebar-title {
+          vertical-align: top;
+          width: 70%;
+          display: inline-block; }
       .sidebar .sidebar-list a:hover .sidebar-item, .sidebar .sidebar-list a.active .sidebar-item {
         background-color: black !important;
         color: white !important; }

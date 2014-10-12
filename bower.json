@@ -2,14 +2,16 @@
   "name": "ng-blankcanvas",
   "version": "0.0.1",
   "dependencies": {
-    "sass-bootstrap": "~3.0.0",
-    "angular": "1.2.x",
-    "angular-mocks": "~1.2.x",
-    "angular-route": "~1.2.x",
-    "modernizr": "~2.6.2",
-    "jquery": "~1.10.2",
-    "contentful": "~0.1.0",
-    "jquery-waypoints": "~2.0.5"
+    "angular-scroll": "~0.6.1",
+    "angular-sanitize": "~1.2.23",
+    "angular-ui-utils": "bower",
+    "ngprogress": "~1.0.6",
+    "ng-contentful": "~0.1.2"
   },
-  "private": true
+  "homepage": "https://github.com/edweena/ng-blankcanvas",
+  "authors": [
+    "James Pants <jamespants@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT"
 }
