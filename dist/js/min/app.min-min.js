@@ -6393,8 +6393,8 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
 }.call(this), function() {
     "use strict";
     var a;
-    a = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "ui.utils", "duScroll", "ngProgress", "listServices" ]), 
-    a.config([ "$routeProvider", function(a) {
+    a = angular.module("listfeature", [ "ngRoute", "ngSanitize", "listControllers", "listDirectives", "duScroll", "ng-contentful", "ngProgress", "listServices" ]), 
+    a.config([ "$routeProvider", "$locationProvider", "contentfulClientProvider", function(a, b, c) {
         return a.when("/lists", {
             templateUrl: "partials/list.html",
             controller: "ListListCtrl"
@@ -6403,34 +6403,31 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
             controller: "ListDetailCtrl"
         }).otherwise({
             redirectTo: "/lists"
-        });
+        }), c.setSpaceId("6s2rqhmim2vw"), c.setAccessToken("c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d");
     } ]);
 }.call(this), function() {
     "use strict";
-    var a, b;
-    b = angular.module("listControllers", []), a = contentful.createClient({
-        accessToken: "c74b04faaa839cf30d0fbf6d0fa5827984c15b39864d7fc3c48a6fe57ad6ad0d",
-        space: "6s2rqhmim2vw"
-    }), b.controller("ListListCtrl", [ "$scope", "$http", function(b) {
-        return b.lists = "", a.entries({
+    var a;
+    a = angular.module("listControllers", []), a.controller("ListListCtrl", [ "$scope", "$http", "contentfulClient", function(a, b, c) {
+        return a.lists = "", c.entries({
             content_type: "1iKCsUgXpSuSouwuMIYACy",
             include: 1
-        }).done(function(a) {
-            return b.$apply(function() {
-                return b.lists = a, console.log(b.lists);
-            });
+        }).then(function(b) {
+            return a.lists = b;
         });
-    } ]), b.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", function(b, c, d, e, f, g) {
+    } ]), a.controller("ListDetailCtrl", [ "$scope", "$routeParams", "$http", "$location", "$sce", "listService", "contentfulClient", "stickyService", function(a, b, c, d, e, f, g) {
         var h;
-        return h = new Showdown.converter(), g.progressInit(), a.entries({
-            "sys.id": c.listId,
+        return h = new Showdown.converter(), a.desktop = !0, f.progressInit(), g.entries({
+            "sys.id": b.listId,
             include: 10
-        }).done(function(a) {
-            return b.$apply(function() {
-                return b.list = a[0], console.log(b.list), b.list.fields.body = h.makeHtml(b.list.fields.body);
-            }), setTimeout(g.removeSpinner, 2e3);
-        }), b.trust = function(a) {
-            return f.trustAsHtml(a);
+        }).then(function(b) {
+            var c, d, e, g;
+            for (a.list = b[0], console.log(a.list), a.list.fields.body = h.makeHtml(a.list.fields.body), 
+            g = a.list.fields.individualListItems, d = 0, e = g.length; e > d; d++) c = g[d], 
+            c.fields.body = h.makeHtml(c.fields.body);
+            return f.removeSpinner();
+        }), a.trust = function(a) {
+            return e.trustAsHtml(a);
         };
     } ]);
 }.call(this), function() {
@@ -6451,8 +6448,6 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
                 return d();
             });
         }, {
-            restrict: "A",
-            replace: !1,
             link: a
         };
     }), a.directive("sticky", function() {
@@ -6486,6 +6481,16 @@ angular.module("duScroll.scrollHelpers", [ "duScroll.requestAnimation" ]).run([ 
                 return b();
             },
             removeSpinner: function() {
+                return c();
+            }
+        };
+    } ]), a.factory("stickyService", [ "$rootScope", "$window", function(a, b) {
+        var c;
+        return c = function() {
+            var a;
+            return a = b.innerWidth, 1024 > a ? ($(".sidebar").waypoint("destroy"), !1) : !0;
+        }, {
+            getDevice: function() {
                 return c();
             }
         };
