@@ -403,14 +403,14 @@ body {
         color: black !important;
         width: 80%; }
         .sidebar .sidebar-list a .sidebar-item .order {
-          width: 15px;
+          width: 12px;
           display: inline-block;
           margin-right: 5px;
           font-size: 0.7em;
           text-align: center;
-          line-height: 15px;
-          height: 15px;
-          border: 2px solid black;
+          line-height: 12px;
+          height: 12px;
+          border: 1px solid black;
           vertical-align: top;
           -o-border-radius: 50%;
           border-radius: 50%; }
