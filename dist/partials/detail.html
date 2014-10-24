@@ -12,6 +12,12 @@
             <div class="img-container"><span class="order">{{entry.fields.order}}</span><img ng-src="{{entry.fields.image.fields.file.url}}"/></div></a></div>
       </li>
     </ul><img ng-src="{{list.fields.authorImage.fields.file.url}}" class="author-hero-image"/>
+    <div class="mobile-share">
+      <div class="button-group">
+        <div class="button"><a href="https://twitter.com/share?url={{list.fields.parentRbmaUrl}}&amp;via=rbma&amp;text={{list.fields.title}}" target="blank"><i class="fa fa-twitter"></i></a></div>
+        <div class="button"><a href="https://www.facebook.com/sharer/sharer.php?u={{list.fields.parentRbmaUrl}}" target="blank"><i class="fa fa-facebook"></i></a></div>
+      </div>
+    </div>
     <p ng-bind-html="trust(list.fields.body)" class="intro"></p>
     <ul class="list-items">
       <li ng-repeat="item in list.fields.individualListItems" class="list-item">
