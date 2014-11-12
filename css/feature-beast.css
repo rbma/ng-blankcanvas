@@ -417,6 +417,7 @@ body {
         .sidebar .sidebar-list a .sidebar-item .sidebar-title {
           vertical-align: top;
           width: 70%;
+          font-size: 0.8em;
           display: inline-block; }
       .sidebar .sidebar-list a:hover .sidebar-item, .sidebar .sidebar-list a.active .sidebar-item {
         background-color: black !important;
